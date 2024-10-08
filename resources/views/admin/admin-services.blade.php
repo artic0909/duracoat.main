@@ -346,6 +346,7 @@
                                             <div class="table-responsive">
                                                 <table class="table table-hover">
                                                     <thead>
+
                                                         <tr>
                                                             <th>Icon</th>
                                                             <th>Image</th>
@@ -355,19 +356,20 @@
                                                             <th>Edit</th>
                                                             <th>Delete</th>
                                                         </tr>
+
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach($adminServices as $adminService)
                                                         <tr>
-                                                            <td><img src="img/icon/micron-test.png" alt=""></td>
-                                                            <td><img src="img/s6.jpg" alt=""></td>
-                                                            <td>title</td>
-                                                            <td>short sdfsdfgfsg</td>
-                                                            <td>long sdfsdfgfsgdfsdf</td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td><img src="{{ asset('storage/' . $adminService->s_icon) }}" alt=""></td>
+                                                            <td><img src="{{ asset('storage/' . $adminService->s_image) }}" alt=""></td>
+                                                            <td>{{$adminService->s_title}}</td>
+                                                            <td>{{$adminService->s_s_desc}}</td>
+                                                            <td>{{$adminService->s_l_desc}}</td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$adminService->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$adminService->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -455,7 +457,7 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addService')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -503,7 +505,8 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+        @foreach($adminServices as $adminService)
+        <div class="modal" id="myEditModal{{$adminService->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -514,12 +517,12 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('editService', $adminService->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/icon/micron-test.png" style="width: 60px; border-radius: 50%;" alt="">
+                                <img src="{{ asset('storage/' . $adminService->s_icon) }}" style="width: 60px; border-radius: 50%;" alt="">
                             </div>
 
                             <div class="form-group">
@@ -529,7 +532,7 @@
 
 
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/banner1.png" style="width: 200px; border-radius: 10px;" alt="">
+                                <img src="{{ asset('storage/' . $adminService->s_image) }}" style="width: 200px; border-radius: 10px;" alt="">
                             </div>
 
                             <div class="form-group">
@@ -539,20 +542,20 @@
 
                             <div class="form-group">
                                 <label for="s_title">Title</label>
-                                <input type="text" class="form-control" name="s_title" id="s_title">
+                                <input type="text" class="form-control" name="s_title" id="s_title" value="{{$adminService->s_title}}">
                             </div>
 
 
                             <div class="form-group">
                                 <label for="s_s_desc">Short Description</label>
-                                <textarea name="s_s_desc" id="s_s_desc" class="form-control" rows="3"></textarea>
+                                <textarea name="s_s_desc" id="s_s_desc" class="form-control" rows="3">{{$adminService->s_s_desc}}</textarea>
                             </div>
 
 
 
                             <div class="form-group">
                                 <label for="s_l_desc">Long Description</label>
-                                <textarea name="s_l_desc" id="s_l_desc" class="form-control" rows="3"></textarea>
+                                <textarea name="s_l_desc" id="s_l_desc" class="form-control" rows="3">{{$adminService->s_l_desc}}</textarea>
                             </div>
 
 
@@ -565,6 +568,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
 
 
@@ -572,17 +576,18 @@
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($adminServices as $adminService)
+        <div class="modal fade" id="myDeleteModal{{$adminService->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$adminService->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteService', $adminService->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -593,6 +598,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 

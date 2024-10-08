@@ -355,16 +355,16 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach($aboutNumbers as $aboutNumber)
                                                         <tr>
-                                                            <td>123</td>
-                                                            <td>123</td>
-                                                            <td>123</td>
-                                                            <td>123</td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td>{{$aboutNumber->clients}}</td>
+                                                            <td>{{$aboutNumber->projects}}</td>
+                                                            <td>{{$aboutNumber->staff}}</td>
+                                                            <td>{{$aboutNumber->awards}}</td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$aboutNumber->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$aboutNumber->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -452,7 +452,7 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addAboutNumber')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -493,7 +493,8 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+        @foreach($aboutNumbers as $aboutNumber)
+        <div class="modal" id="myEditModal{{$aboutNumber->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -504,28 +505,28 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('editAboutNumber', $aboutNumber->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <label for="clients">No. of Clients</label>
-                                <input type="number" id="clients" name="clients" class="form-control">
+                                <input type="number" id="clients" name="clients" class="form-control" value="{{$aboutNumber->clients}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="projects">No. of Projects</label>
-                                <input type="number" id="projects" name="projects" class="form-control">
+                                <input type="number" id="projects" name="projects" class="form-control" value="{{$aboutNumber->projects}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="staff">No. of Staff</label>
-                                <input type="number" id="staff" name="staff" class="form-control">
+                                <input type="number" id="staff" name="staff" class="form-control" value="{{$aboutNumber->staff}}">
                             </div>
 
 
                             <div class="form-group">
                                 <label for="awards">No. of Awards</label>
-                                <input type="number" id="awards" name="awards" class="form-control">
+                                <input type="number" id="awards" name="awards" class="form-control" value="{{$aboutNumber->awards}}">
                             </div>
 
 
@@ -538,6 +539,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
 
 
@@ -545,17 +547,18 @@
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($aboutNumbers as $aboutNumber)
+        <div class="modal fade" id="myDeleteModal{{$aboutNumber->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$aboutNumber->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteAboutNumber', $aboutNumber->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -566,6 +569,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 

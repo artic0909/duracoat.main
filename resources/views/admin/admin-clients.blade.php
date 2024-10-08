@@ -354,14 +354,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach($clients as $client)
                                                         <tr>
-                                                            <td><img src="img/clients/1.jpg" alt="" style="width: 80px; height: 80px; border-radius: 6px;"></td>
-                                                            <td>title</td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td><img src="{{ asset('storage/' . $client->client_img) }}" alt="" style="width: 80px; height: 80px; border-radius: 6px;"></td>
+                                                            <td>{{$client->client_name}}</td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$client->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$client->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -449,7 +449,7 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addClient')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="client_img">Image</label>
@@ -472,6 +472,7 @@
                 </div>
             </div>
         </div>
+       
 
 
 
@@ -479,7 +480,8 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+        @foreach($clients as $client)
+        <div class="modal" id="myEditModal{{$client->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -490,11 +492,11 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('editClient', $client->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/clients/1.jpg" style="width: 200px; border-radius: 10px;" alt="">
+                                <img src="{{ asset('storage/' . $client->client_img) }}" style="width: 200px; border-radius: 10px;" alt="">
                             </div>
 
                             <div class="form-group">
@@ -505,7 +507,7 @@
 
                             <div class="form-group">
                                 <label for="client_name">Title</label>
-                                <input type="text" id="client_name" name="client_name" class="form-control">
+                                <input type="text" id="client_name" name="client_name" class="form-control" value="{{$client->client_name}}">
                             </div>
 
 
@@ -519,6 +521,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
 
 
@@ -526,17 +529,18 @@
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($clients as $client)
+        <div class="modal fade" id="myDeleteModal{{$client->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$client->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteClient', $client->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -547,6 +551,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 

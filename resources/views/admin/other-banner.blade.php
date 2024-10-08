@@ -353,13 +353,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach($otherBanners as $otherBanner)
 
                                                         <tr>
-                                                            <td><img src="img/t1.jpg" alt=""></td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td><img src="{{ asset('storage/' . $otherBanner->other_banner) }}" alt="" style="width: 150px; height: 80px; border-radius: 10px;"></td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$otherBanner->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$otherBanner->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
 
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -447,11 +449,11 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addOtherBanner')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="big_banner">Other Banner</label>
-                                <input type="file" class="form-control" id="big_banner" name="big_banner">
+                                <label for="other_banner">Other Banner</label>
+                                <input type="file" class="form-control" id="other_banner" name="other_banner">
                                 <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
                             </div>
 
@@ -472,7 +474,8 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+         @foreach($otherBanners as $otherBanner)
+        <div class="modal" id="myEditModal{{$otherBanner->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -483,15 +486,15 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('editOtherBanner', $otherBanner->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/banner1.png" style="width: 100%; height:150px; border-radius: 10px;" alt="">
+                                <img src="{{ asset('storage/' . $otherBanner->other_banner) }}" style="width: 100%; height:150px; border-radius: 10px;" alt="">
                             </div>
                             <div class="form-group">
-                                <label for="big_banner">Other Banner</label>
-                                <input type="file" class="form-control" id="big_banner" name="big_banner">
+                                <label for="other_banner">Other Banner</label>
+                                <input type="file" class="form-control" id="other_banner" name="other_banner">
                                 <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
                             </div>
 
@@ -505,24 +508,25 @@
                 </div>
             </div>
         </div>
-
+        @endforeach
 
 
 
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($otherBanners as $otherBanner)
+        <div class="modal fade" id="myDeleteModal{{$otherBanner->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$otherBanner->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteOtherBanner', $otherBanner->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -533,7 +537,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
-
+        @endforeach
 
 
 

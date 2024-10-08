@@ -357,15 +357,16 @@
                                                     </thead>
                                                     <tbody>
 
+                                                        @foreach($aboutDatas as $aboutData)
                                                         <tr>
-                                                            <td><img src="img/t1.jpg" alt=""></td>
-                                                            <td>sdfsdfgfsg</td>
-                                                            <td>sdfsdfgfsgdfsdf</td>
-                                                            <td>15 Years</td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td><img src="{{ asset('storage/' . $aboutData->about_image) }}" alt=""></td>
+                                                            <td>{{$aboutData->about_title}}</td>
+                                                            <td>{{$aboutData->about_desc}}</td>
+                                                            <td>{{$aboutData->about_ex}}</td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$aboutData->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$aboutData->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -453,7 +454,7 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addAboutData')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="about_image">Image</label>
@@ -493,7 +494,8 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+        @foreach($aboutDatas as $aboutData)
+        <div class="modal" id="myEditModal{{$aboutData->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -504,12 +506,12 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('editAboutData', $aboutData->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/banner1.png" style="width: 230px; border-radius: 10px;" alt="">
+                                <img src="{{ asset('storage/' . $aboutData->about_image) }}" style="width: 230px; border-radius: 10px;" alt="">
                             </div>
 
                             <div class="form-group">
@@ -520,17 +522,17 @@
 
                             <div class="form-group">
                                 <label for="about_title">Title</label>
-                                <input type="text" id="about_title" name="about_title" class="form-control">
+                                <input type="text" id="about_title" name="about_title" class="form-control" value="{{$aboutData->about_title}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="about_desc">Description</label>
-                                <textarea class="form-control" name="about_desc" id="about_desc" rows="3"></textarea>
+                                <textarea class="form-control" name="about_desc" id="about_desc" rows="3">{{$aboutData->about_desc}}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="about_ex">Year of Experience</label>
-                                <input type="text" id="about_ex" name="about_ex" class="form-control">
+                                <input type="text" id="about_ex" name="about_ex" class="form-control" value="{{$aboutData->about_ex}}">
                             </div>
 
 
@@ -543,24 +545,25 @@
                 </div>
             </div>
         </div>
-
+        @endforeach
 
 
 
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($aboutDatas as $aboutData)
+        <div class="modal fade" id="myDeleteModal{{$aboutData->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$aboutData->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteAboutData', $aboutData->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -571,6 +574,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 
