@@ -1172,10 +1172,10 @@
             <i class="fa fa-map-marker-alt me-3"></i>Sankrail Industrial Park, Dhulagarh, Howrah, WB-711302
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i><a href="tel:7605034979" style="color: white;">+91 7605034979</a>
+            <i class="fa fa-phone me-3"></i><a href="tel:7605034979" style="color: white;">+91 7605034979</a>
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
+            <i class="fa fa-phone me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
           </p>
           <p class="mb-2">
             <i class="fa fa-envelope me-3"></i><a href="mailto:duracoat40@gmail.com" style="color: white;">duracoat40@gmail.com</a>
