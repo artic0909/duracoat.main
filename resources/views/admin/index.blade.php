@@ -38,7 +38,7 @@
 
             <!-- logo -->
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo mr-5" href="index.html">
+                <a class="navbar-brand brand-logo mr-5" href="/dashboard">
                     <h3 class="font-bold">Dura Coat</h3>
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="index.html">
