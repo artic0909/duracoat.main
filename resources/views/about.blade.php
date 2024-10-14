@@ -113,6 +113,7 @@
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link active">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -125,8 +126,8 @@
         <a href="/contact" class="nav-item nav-link">Contact</a>
       </div>
       <a
-        href="/test-cirtificate"
-        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Test Certificate<i class="fa fa-arrow-right ms-3"></i></a>
+        href="/blogs"
+        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -139,9 +140,13 @@
 
 
   <!-- Page Header Start -->
+  @foreach($otherbanners as $otherbanner)
   <div
     class="container-fluid page-header py-5 mb-5 wow fadeIn"
-    data-wow-delay="0.1s">
+    data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(15, 66, 41, 0.315), rgba(15, 66, 41, 0.336)), 
+     url('{{ asset('storage/' . $otherbanner->other_banner) }}') center center no-repeat;
+     background-size: cover;">
     <div class="container text-center py-5">
       <h1 class="display-3 text-white mb-4 animated slideInDown">About Us</h1>
       <nav aria-label="breadcrumb animated slideInDown">
@@ -152,6 +157,7 @@
       </nav>
     </div>
   </div>
+  @endforeach
   <!-- Page Header End -->
 
 
@@ -165,25 +171,26 @@
   <div class="container-xxl py-5">
     <div class="container">
       <div class="row g-5 align-items-end">
+        @foreach($aboutDatas as $aboutData)
         <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
           <img
             class="img-fluid rounded"
             data-wow-delay="0.1s"
-            src="img/about.jpg" />
+            src="{{ asset('storage/' . $aboutData->about_image) }}" />
         </div>
+
         <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
-          <h1 class="display-1 text-primary mb-0">15</h1>
+          <h1 class="display-1 text-primary mb-0">{{$aboutData->about_ex}}</h1>
           <p class="text-primary mb-4">Year of Experience</p>
           <h1 class="display-5 mb-4">
-            Shaping Your Vision with Precision & Perfect Finish
+            {{$aboutData->about_title}}
           </h1>
           <p class="mb-4">
-            Experience the perfect blend of durability and aesthetics with our
-            premium powder coating services, designed to enhance and protect
-            your metal surfaces.
+            {{$aboutData->about_desc}}
           </p>
           <!-- <a class="btn btn-primary py-3 px-4" href="">Explore More</a> -->
         </div>
+
         <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
           <div class="row g-5">
             <div class="col-12 col-sm-6 col-lg-12">
@@ -206,6 +213,7 @@
             </div>
           </div>
         </div>
+        @endforeach
       </div>
     </div>
   </div>
@@ -225,30 +233,34 @@
     data-image-src="img/banner2.jpg">
     <div class="container py-5">
       <div class="row g-5">
+
+      @foreach($aboutNums as $aboutNum)
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.1s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->clients}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Happy Clients</span>
         </div>
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.3s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->projects}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Project Complated</span>
         </div>
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.5s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->staff}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Dedicated Staff</span>
         </div>
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.7s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->awards}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Awards Achieved</span>
         </div>
+        @endforeach
+        
       </div>
     </div>
   </div>
@@ -272,48 +284,24 @@
         <h1 class="display-5 mb-5">Dedicated & Experienced Team Members</h1>
       </div>
       <div class="row g-4">
+
+        @foreach($teams as $team)
         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
           <div class="team-item rounded">
-            <img class="img-fluid" src="img/t1.jpg" alt="" />
+            <img class="img-fluid" src="{{ asset('storage/' . $team->t_img) }}" alt="" />
             <div class="team-text">
-              <h4 class="mb-0">Saklin Mustak</h4>
-              <p class="text-primary">Web Developer</p>
+              <h4 class="mb-0">{{$team->t_name}}</h4>
+              <p class="text-primary">{{$team->t_prof}}</p>
               <div class="team-social d-flex">
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-square rounded-circle me-2" href="{{$team->t_fb}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square rounded-circle me-2" href="{{$team->t_twit}}" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-square rounded-circle me-2" href="{{$team->t_insta}}" target="_blank"><i class="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="team-item rounded">
-            <img class="img-fluid" src="img/t1.jpg" alt="" />
-            <div class="team-text">
-              <h4 class="mb-0">Saklin Mustak</h4>
-              <p class="text-primary">Software Developer</p>
-              <div class="team-social d-flex">
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="team-item rounded">
-            <img class="img-fluid" src="img/t1.jpg" alt="" />
-            <div class="team-text">
-              <h4 class="mb-0">Saklin Mustak</h4>
-              <p class="text-primary">Full Stack Developer</p>
-              <div class="team-social d-flex">
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
+
       </div>
     </div>
   </div>

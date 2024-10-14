@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Home Banner</title>
+    <title>Company's Details</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="Admin/vendors/feather/feather.css">
     <link rel="stylesheet" href="Admin/vendors/ti-icons/css/themify-icons.css">
@@ -275,6 +275,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/admin-collab">Collab Companies</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/admin-clients">Our Clients</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/company-details">Our Details</a></li>
                             </ul>
                         </div>
                     </li>
@@ -343,7 +344,7 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Home Banner</h3>
+                                    <h3 class="font-weight-bold">Dura Coat's Contact Details</h3>
                                 </div>
 
 
@@ -353,24 +354,24 @@
                                 <div class="col-lg-12 grid-margin stretch-card mt-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">Ratio: 1920x1080</h4>
                                             <div class="table-responsive">
                                                 <table class="table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th>Banners</th>
-                                                            <th>Titles</th>
+                                                            <th>Number</th>
+                                                            <th>Email ID</th>
                                                             <th>Edit</th>
                                                             <th>Delete</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($homeBanners as $homeBanner)
+
+                                                        @foreach($cdatas as $cdata)
                                                         <tr>
-                                                            <td><img src="{{ asset('storage/' . $homeBanner->home_banner) }}" alt="" style="width: 150px; height: 80px; border-radius: 10px;"></td>
-                                                            <td style="text-transform: capitalize;">{{$homeBanner->home_banner_title}}</td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$homeBanner->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$homeBanner->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td>{{$cdata->c_number}}</td>
+                                                            <td>{{$cdata->c_email}}</td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$cdata->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$cdata->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
                                                         @endforeach
                                                     </tbody>
@@ -454,22 +455,23 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Home Banner</h4>
+                        <h4 class="modal-title">Add Contact Details</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
 
                     <div class="modal-body">
-                        <form action="{{ route('addHomeBanner') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addCDetails')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+
                             <div class="form-group">
-                                <label for="home_banner">Home Banner</label>
-                                <input type="file" class="form-control" id="home_banner" name="home_banner">
-                                <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
+                                <label for="c_number">Company's Number</label>
+                                <input type="text" id="c_number" name="c_number" class="form-control">
                             </div>
+
                             <div class="form-group">
-                                <label for="home_banner_title">Title</label>
-                                <input type="text" class="form-control" id="home_banner_title" name="home_banner_title">
+                                <label for="c_email">Company's Email</label>
+                                <textarea class="form-control" name="c_email" id="c_email" rows="3"></textarea>
                             </div>
 
 
@@ -489,32 +491,30 @@
 
 
         <!-- edit modal -->
-        @foreach($homeBanners as $homeBanner)
-        <div class="modal" id="myEditModal{{$homeBanner->id}}">
+        @foreach($cdatas as $cdata)
+        <div class="modal" id="myEditModal{{$cdata->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Home Banner</h4>
+                        <h4 class="modal-title">Edit Contact Details</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
 
                     <div class="modal-body">
-                        <form action="{{route('editHomeBanner', $homeBanner->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('editCDetails', $cdata->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="{{ asset('storage/' . $homeBanner->home_banner) }}" style="width: 100%; height:150px; border-radius: 10px;" alt="">
-                            </div>
+
                             <div class="form-group">
-                                <label for="home_banner">Home Banner</label>
-                                <input type="file" class="form-control" id="home_banner" name="home_banner">
-                                <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
+                                <label for="c_number">Company's Number</label>
+                                <input type="text" id="c_number" name="c_number" class="form-control" value="{{$cdata->c_number}}">
                             </div>
+
                             <div class="form-group">
-                                <label for="home_banner_title">Title</label>
-                                <input type="text" class="form-control" id="home_banner_title" name="home_banner_title" value="{{$homeBanner->home_banner_title}}">
+                                <label for="c_email">Company's Email</label>
+                                <textarea class="form-control" name="c_email" id="c_email" rows="3">{{$cdata->c_email}}</textarea>
                             </div>
 
 
@@ -534,18 +534,18 @@
 
 
         <!-- delete modal -->
-        @foreach($homeBanners as $homeBanner)
-        <div class="modal fade" id="myDeleteModal{{$homeBanner->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($cdatas as $cdata)
+        <div class="modal fade" id="myDeleteModal{{$cdata->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal{{$homeBanner->id}}">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$cdata->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="{{route( 'deleteHomeBanner', $homeBanner->id )}}" method="POST">
+                        <form action="{{route('deleteCDetails', $cdata->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

@@ -114,6 +114,7 @@
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
         <a href="/ral" class="nav-item nav-link active">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -126,8 +127,8 @@
         <a href="/contact" class="nav-item nav-link">Contact</a>
       </div>
       <a
-        href="/test-cirtificate"
-        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Test Certificate<i class="fa fa-arrow-right ms-3"></i></a>
+        href="/blogs"
+        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -140,19 +141,28 @@
 
 
   <!-- Page Header Start -->
+  @foreach($otherbanners as $otherbanner)
   <div
     class="container-fluid page-header py-5 mb-5 wow fadeIn"
-    data-wow-delay="0.1s">
+    data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(15, 66, 41, 0.315), rgba(15, 66, 41, 0.336)), 
+     url('{{ asset('storage/' . $otherbanner->other_banner) }}') center center no-repeat;
+     background-size: cover;">
     <div class="container text-center py-5">
-      <h1 class="display-3 text-white mb-4 animated slideInDown">RALs</h1>
+      <h1 class="display-3 text-white mb-4 animated slideInDown">
+        RAL
+      </h1>
       <nav aria-label="breadcrumb animated slideInDown">
         <ol class="breadcrumb justify-content-center mb-0">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">RALs</li>
+          <li class="breadcrumb-item active" aria-current="page">
+            RAL
+          </li>
         </ol>
       </nav>
     </div>
   </div>
+  @endforeach
   <!-- Page Header End -->
 
 
@@ -169,7 +179,7 @@
         class="text-center mx-auto wow fadeInUp"
         data-wow-delay="0.1s"
         style="max-width: 500px">
-        <p class="fs-5 fw-bold text-primary">RALs</p>
+        <p class="fs-5 fw-bold text-primary">RAL</p>
         <h1 class="display-5 mb-5">Explore Our RAL Color</h1>
       </div>
       <div class="row wow fadeInUp" data-wow-delay="0.3s">
@@ -182,38 +192,42 @@
       </div>
 
       <div class="row g-4 portfolio-container">
+
+        @foreach($rals as $ral)
         <div
           class="col-lg-4 col-md-6 portfolio-item ral wow fadeInUp"
           data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/ral1.png" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Dura Coat's RALs</h4>
-            </div>
+          <div class="portfolio-inner1 rounded">
+            <img class="img-fluid" src="{{ asset('storage/' . $ral->ral) }}" alt="" data-bs-toggle="modal" data-bs-target="#myRAL{{$ral->id}}" />
+
           </div>
         </div>
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item ral wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/ral1.png" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Dura Coat's RALs</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item ral wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/ral1.png" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Dura Coat's RALs</h4>
+
+
+
+
+        <!-- view modal start -->
+        <div class="modal fade" id="myRAL{{$ral->id}}" tabindex="-1" aria-labelledby="myRALLabel{{$ral->id}}" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+              <div class="modal-body" style="display: flex; justify-content: center;">
+                <img class="img-fluid" src="{{ asset('storage/' . $ral->ral) }}" alt="" />
+              </div>
+
+
             </div>
           </div>
         </div>
+        <!-- view modal end -->
+
+
+
+
+        @endforeach
+
       </div>
     </div>
   </div>
@@ -351,6 +365,16 @@
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

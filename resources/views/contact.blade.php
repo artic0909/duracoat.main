@@ -112,6 +112,7 @@
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -124,8 +125,8 @@
         <a href="/contact" class="nav-item nav-link active">Contact</a>
       </div>
       <a
-        href="/test-cirtificate"
-        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Test Certificate<i class="fa fa-arrow-right ms-3"></i></a>
+        href="/blogs"
+        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -137,9 +138,13 @@
 
 
   <!-- Page Header Start -->
+  @foreach($otherbanners as $otherbanner)
   <div
     class="container-fluid page-header py-5 mb-5 wow fadeIn"
-    data-wow-delay="0.1s">
+    data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(15, 66, 41, 0.315), rgba(15, 66, 41, 0.336)), 
+     url('{{ asset('storage/' . $otherbanner->other_banner) }}') center center no-repeat;
+     background-size: cover;">
     <div class="container text-center py-5">
       <h1 class="display-3 text-white mb-4 animated slideInDown">
         Contact Us
@@ -147,11 +152,14 @@
       <nav aria-label="breadcrumb animated slideInDown">
         <ol class="breadcrumb justify-content-center mb-0">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Contact</li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Contact
+          </li>
         </ol>
       </nav>
     </div>
   </div>
+  @endforeach
   <!-- Page Header End -->
 
 
@@ -173,7 +181,8 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quo
             voluptas dicta rerum, exercitationem ducimus?
           </p>
-          <form>
+          <form action="{{ route('addContact') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="form-floating">
@@ -181,6 +190,7 @@
                     type="text"
                     class="form-control"
                     id="name"
+                    name="name"
                     placeholder="Your Name" />
                   <label for="name">Your Name</label>
                 </div>
@@ -191,6 +201,7 @@
                     type="email"
                     class="form-control"
                     id="email"
+                    name="email"
                     placeholder="Your Email" />
                   <label for="email">Your Email</label>
                 </div>
@@ -201,6 +212,7 @@
                     type="text"
                     class="form-control"
                     id="subject"
+                    name="subject"
                     placeholder="Subject" />
                   <label for="subject">Subject</label>
                 </div>
@@ -211,6 +223,7 @@
                     class="form-control"
                     placeholder="Leave a message here"
                     id="message"
+                    name="message"
                     style="height: 100px"></textarea>
                   <label for="message">Message</label>
                 </div>
@@ -242,6 +255,29 @@
     </div>
   </div>
   <!-- Contact End -->
+
+
+
+
+
+  <!-- Success Modal For Contact Data Start -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="successModalLabel">Success</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2 class="text-primary">Your message has been sent successfully!</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Success Modal For Contact Data End -->
 
 
 
@@ -371,6 +407,38 @@
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+  <!-- Vanilla JavaScript to trigger the modal -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if ("{{ session('success') }}") {
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+      }
+    });
+  </script>
 </body>
 
 </html>

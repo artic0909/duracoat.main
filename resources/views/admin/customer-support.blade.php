@@ -224,6 +224,8 @@
                         <div class="collapse" id="ui-basic1111">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/admin-services">Services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-ral">RAL</a></li>
+
                             </ul>
                         </div>
                     </li>
@@ -298,6 +300,15 @@
                     </li>
 
 
+                    <!-- Blogs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-blogs">
+                            <i class="icon-contract menu-icon"></i>
+                            <span class="menu-title">Blogs</span>
+                        </a>
+                    </li>
+
+
 
                     <!-- Customer Support -->
                     <li class="nav-item">
@@ -354,15 +365,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach($queries as $query)
                                                         <tr>
-                                                            <td>name</td>
-                                                            <td>email@</td>
-                                                            <td>subject</td>
-                                                            <td>message</td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td>{{$query->name}}</td>
+                                                            <td>{{$query->email}}</td>
+                                                            <td>{{$query->subject}}</td>
+                                                            <td>{{$query->message}}</td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$query->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -504,17 +515,18 @@
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($queries as $query)
+        <div class="modal fade" id="myDeleteModal{{$query->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$query->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteSupport', $query->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -525,6 +537,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 

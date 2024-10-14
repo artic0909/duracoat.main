@@ -224,6 +224,8 @@
                         <div class="collapse" id="ui-basic1111">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/admin-services">Services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-ral">RAL</a></li>
+
                             </ul>
                         </div>
                     </li>
@@ -298,6 +300,15 @@
                     </li>
 
 
+                    <!-- Blogs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-blogs">
+                            <i class="icon-contract menu-icon"></i>
+                            <span class="menu-title">Blogs</span>
+                        </a>
+                    </li>
+
+
 
                     <!-- Customer Support -->
                     <li class="nav-item">
@@ -356,16 +367,16 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach($tsts as $tst)
                                                         <tr>
-                                                            <td><img src="img/t1.jpg" alt="" style="width: 60px; height: 60px; border-radius: 6px;"></td>
-                                                            <td>name</td>
-                                                            <td>profession</td>
-                                                            <td>message</td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td><img src="{{ asset('storage/' . $tst->tst_img) }}" alt="" style="width: 60px; height: 60px; border-radius: 6px;"></td>
+                                                            <td>{{$tst->tst_name}}</td>
+                                                            <td>{{$tst->tst_prof}}</td>
+                                                            <td>{{$tst->tst_msg}}</td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$tst->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$tst->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -453,11 +464,11 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addTST')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="tst_image">Image</label>
-                                <input type="file" class="form-control" id="tst_image" name="tst_image">
+                                <label for="tst_img">Image</label>
+                                <input type="file" class="form-control" id="tst_img" name="tst_img">
                                 <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
                             </div>
 
@@ -472,8 +483,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="tst_message">Message</label>
-                                <textarea name="tst_message" id="tst_message" class="form-control" rows="3"></textarea>
+                                <label for="tst_msg">Message</label>
+                                <textarea name="tst_msg" id="tst_msg" class="form-control" rows="3"></textarea>
                             </div>
 
 
@@ -496,7 +507,8 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+        @foreach($tsts as $tst)
+        <div class="modal" id="myEditModal{{$tst->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -507,33 +519,33 @@
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('editTST', $tst->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/t1.jpg" style="width: 130px; border-radius: 10px;" alt="">
+                                <img src="{{ asset('storage/' . $tst->tst_img) }}" style="width: 130px; border-radius: 10px;" alt="">
                             </div>
 
                             <div class="form-group">
-                                <label for="tst_image">Image</label>
-                                <input type="file" class="form-control" id="tst_image" name="tst_image">
+                                <label for="tst_img">Image</label>
+                                <input type="file" class="form-control" id="tst_img" name="tst_img">
                                 <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
                             </div>
 
                             <div class="form-group">
                                 <label for="tst_name">Name</label>
-                                <input type="text" id="tst_name" name="tst_name" class="form-control">
+                                <input type="text" id="tst_name" name="tst_name" class="form-control" value="{{$tst->tst_name}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="tst_prof">Profession</label>
-                                <input type="text" id="tst_prof" name="tst_prof" class="form-control">
+                                <input type="text" id="tst_prof" name="tst_prof" class="form-control" value="{{$tst->tst_prof}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="tst_message">Message</label>
-                                <textarea name="tst_message" id="tst_message" class="form-control" rows="3"></textarea>
+                                <label for="tst_msg">Message</label>
+                                <textarea name="tst_msg" id="tst_msg" class="form-control" rows="3">{{$tst->tst_msg}}</textarea>
                             </div>
 
 
@@ -547,6 +559,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
 
 
@@ -554,17 +567,18 @@
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($tsts as $tst)
+        <div class="modal fade" id="myDeleteModal{{$tst->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$tst->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteTST', $tst->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -575,6 +589,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 

@@ -198,10 +198,10 @@ h6,
     }
 }
 
-.page-header {
+/* .page-header {
     background: linear-gradient(rgba(15, 66, 41, 0.315), rgba(15, 66, 41, 0.336)), url(../img/banner1.png) center center no-repeat;
     background-size: cover;
-}
+} */
 
 .page-header .breadcrumb-item+.breadcrumb-item::before {
     color: var(--light);

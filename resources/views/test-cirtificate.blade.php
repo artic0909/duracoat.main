@@ -146,6 +146,7 @@
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
+        <a href="/test-cirtificate" class="nav-item nav-link active">Testings</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -158,8 +159,8 @@
         <a href="/contact" class="nav-item nav-link">Contact</a>
       </div>
       <a
-        href="/test-cirtificate"
-        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block active">Test Certificate<i class="fa fa-arrow-right ms-3"></i></a>
+        href="/blogs"
+        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -170,9 +171,13 @@
 
 
   <!-- Page Header Start -->
+  @foreach($otherbanners as $otherbanner)
   <div
     class="container-fluid page-header py-5 mb-5 wow fadeIn"
-    data-wow-delay="0.1s">
+    data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(15, 66, 41, 0.315), rgba(15, 66, 41, 0.336)), 
+     url('{{ asset('storage/' . $otherbanner->other_banner) }}') center center no-repeat;
+     background-size: cover;">
     <div class="container text-center py-5">
       <h1 class="display-3 text-white mb-4 animated slideInDown">
         Test Certificate
@@ -187,6 +192,7 @@
       </nav>
     </div>
   </div>
+  @endforeach
   <!-- Page Header End -->
 
 

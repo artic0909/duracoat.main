@@ -20,7 +20,7 @@ class AdminHomeBannerController extends Controller
     {
         $validated = $request->validate([
             'home_banner' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'home_banner_title' => 'string',
+            'home_banner_title' => 'string|nullable',
         ]);
 
         if ($request->hasFile('home_banner')) {
@@ -45,7 +45,7 @@ class AdminHomeBannerController extends Controller
     {
         $validated = $request->validate([
             'home_banner' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'home_banner_title' => 'string',
+            'home_banner_title' => 'string|nullable',
         ]);
 
         $homeBannerInfo = AdminHomeBannerModel::find($id);

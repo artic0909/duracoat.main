@@ -113,6 +113,7 @@
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
         <a href="/clients" class="nav-item nav-link active">Clients</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -125,8 +126,8 @@
         <a href="/contact" class="nav-item nav-link">Contact</a>
       </div>
       <a
-        href="/test-cirtificate"
-        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Test Certificate<i class="fa fa-arrow-right ms-3"></i></a>
+        href="/blogs"
+        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -139,9 +140,13 @@
 
 
   <!-- Page Header Start -->
+  @foreach($otherbanners as $otherbanner)
   <div
     class="container-fluid page-header py-5 mb-5 wow fadeIn"
-    data-wow-delay="0.1s">
+    data-wow-delay="0.1s"
+    style="background: linear-gradient(rgba(15, 66, 41, 0.315), rgba(15, 66, 41, 0.336)), 
+     url('{{ asset('storage/' . $otherbanner->other_banner) }}') center center no-repeat;
+     background-size: cover;">
     <div class="container text-center py-5">
       <h1 class="display-3 text-white mb-4 animated slideInDown">
         Our Clients
@@ -156,6 +161,7 @@
       </nav>
     </div>
   </div>
+  @endforeach
   <!-- Page Header End -->
 
 
@@ -187,164 +193,28 @@
       </div>
 
       <div class="row g-4 portfolio-container">
+
+
+
+
+
+        @foreach($clients as $client)
         <div
           class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
           data-wow-delay="0.1s">
           <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/1.jpg" alt="" />
+            <img class="img-fluid" src="{{ asset('storage/' . $client->client_img) }}" alt="" />
             <div class="portfolio-text">
-              <h4 class="text-white mb-4">ITC Limited</h4>
+              <h4 class="text-white mb-4">{{$client->client_name}}</h4>
             </div>
           </div>
         </div>
+        @endforeach
 
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/2.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Savco sales Pvt Ltd</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/3.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Rail Vikas Nigam Limited</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/4.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Power Mech</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/5.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Kolkata Metro Rail Corporation</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/6.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Vinar Systems Pvt Ltd</h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/7.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Itd Cementation India Ltd</h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/8.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Udyogi Safety</h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/9.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">
-                Bharat Heavy Electricals Limited
-              </h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/10.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">L & T</h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/11.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">
-                Joyville Shapoorji Housing Private Limited
-              </h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/12.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Godrej Properties</h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/clients/13.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">KALPATARU</h4>
-            </div>
-          </div>
-        </div>
-
-        <!-- <div
-            class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
-            data-wow-delay="0.1s"
-          >
-            <div class="portfolio-inner rounded">
-              <img class="img-fluid" src="img/clients/14.jpg" alt="" />
-              <div class="portfolio-text">
-                <h4 class="text-white mb-4">E Rail</h4>
-              </div>
-            </div>
-          </div> -->
       </div>
     </div>
   </div>

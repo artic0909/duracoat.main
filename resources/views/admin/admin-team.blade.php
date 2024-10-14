@@ -224,6 +224,8 @@
                         <div class="collapse" id="ui-basic1111">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/admin-services">Services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-ral">RAL</a></li>
+
                             </ul>
                         </div>
                     </li>
@@ -298,6 +300,15 @@
                     </li>
 
 
+                    <!-- Blogs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-blogs">
+                            <i class="icon-contract menu-icon"></i>
+                            <span class="menu-title">Blogs</span>
+                        </a>
+                    </li>
+
+
 
                     <!-- Customer Support -->
                     <li class="nav-item">
@@ -358,18 +369,18 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                        @foreach($teams as $team)
                                                         <tr>
-                                                            <td><img src="img/t1.jpg" alt="" style="width: 80px; height: 80px; border-radius: 6px;"></td>
-                                                            <td>name</td>
-                                                            <td>profession</td>
-                                                            <td><a href=""><i class="fa-brands fa-square-instagram fa-2x" style="color: red;"></i></a></td>
-                                                            <td><a href=""><i class="fa-brands fa-square-facebook fa-2x" style="color: blue;"></a></td>
-                                                            <td><a href=""><i class="fa-brands fa-square-twitter fa-2x" style="color: skyblue;"></a></td>
-                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal"><i class="fa-solid fa-trash-can"></i></a></td>
+                                                            <td><img src="{{ asset('storage/' . $team->t_img) }}" alt="" style="width: 80px; height: 80px; border-radius: 6px;"></td>
+                                                            <td>{{$team->t_name}}</td>
+                                                            <td>{{$team->t_prof}}</td>
+                                                            <td><a href="{{$team->t_insta}}" target="_blank"><i class="fa-brands fa-square-instagram fa-2x" style="color: red;"></i></a></td>
+                                                            <td><a href="{{$team->t_fb}}" target="_blank"><i class="fa-brands fa-square-facebook fa-2x" style="color: blue;"></a></td>
+                                                            <td><a href="{{$team->t_twit}}" target="_blank"><i class="fa-brands fa-square-twitter fa-2x" style="color: skyblue;"></a></td>
+                                                            <td><a href="" class="text-success" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myEditModal{{$team->id}}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                                            <td><a href="" class="text-danger" style="font-size: 1.4rem;" data-toggle="modal" data-target="#myDeleteModal{{$team->id}}"><i class="fa-solid fa-trash-can"></i></a></td>
                                                         </tr>
-
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -451,46 +462,46 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Add Bending Image</h4>
+                        <h4 class="modal-title">Edit Team Data</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('addTeam')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="t_image">Image</label>
-                                <input type="file" class="form-control" id="t_image" name="t_image">
+                                <label for="t_img">Image</label>
+                                <input type="file" class="form-control" id="t_img" name="t_img">
                                 <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
                             </div>
 
                             <div class="form-group">
                                 <label for="t_name">Name</label>
                                 <input type="text" id="t_name" name="t_name" class="form-control">
-                            </div>     
-                            
+                            </div>
+
                             <div class="form-group">
                                 <label for="t_prof">Profession</label>
                                 <input type="text" id="t_prof" name="t_prof" class="form-control">
                             </div>
-                                                        
+
                             <div class="form-group">
                                 <label for="t_insta">Insta LINK</label>
                                 <input type="text" id="t_insta" name="t_insta" class="form-control">
                             </div>
-                                                        
+
                             <div class="form-group">
                                 <label for="t_fb">Facebook Link</label>
                                 <input type="text" id="t_fb" name="t_fb" class="form-control">
                             </div>
-                                                        
+
                             <div class="form-group">
                                 <label for="t_twit">Twitter Link</label>
                                 <input type="text" id="t_twit" name="t_twit" class="form-control">
                             </div>
 
-                            
+
 
 
                             <button type="submit" class="btn btn-success">Submit</button>
@@ -509,54 +520,55 @@
 
 
         <!-- edit modal -->
-        <div class="modal" id="myEditModal">
+        @foreach($teams as $team)
+        <div class="modal" id="myEditModal{{$team->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Bending Image</h4>
+                        <h4 class="modal-title">Edit Team Data</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
 
                     <div class="modal-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('editTeam', $team->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
                             <div class="form-group" style="display: flex; justify-content: center;">
-                                <img src="img/t1.jpg" style="width: 160px; border-radius: 10px;" alt="">
+                                <img src="{{ asset('storage/' . $team->t_img) }}" style="width: 160px; border-radius: 10px;" alt="">
                             </div>
 
                             <div class="form-group">
-                                <label for="t_image">Image</label>
-                                <input type="file" class="form-control" id="t_image" name="t_image">
+                                <label for="t_img">Image</label>
+                                <input type="file" class="form-control" id="t_img" name="t_img">
                                 <small id="emailHelp" class="form-text text-muted">Upload banner less than 1.5 MB</small>
                             </div>
 
                             <div class="form-group">
                                 <label for="t_name">Name</label>
-                                <input type="text" id="t_name" name="t_name" class="form-control">
-                            </div>     
-                            
+                                <input type="text" id="t_name" name="t_name" class="form-control" value="{{$team->t_name}}">
+                            </div>
+
                             <div class="form-group">
                                 <label for="t_prof">Profession</label>
-                                <input type="text" id="t_prof" name="t_prof" class="form-control">
+                                <input type="text" id="t_prof" name="t_prof" class="form-control" value="{{$team->t_prof}}">
                             </div>
-                                                        
+
                             <div class="form-group">
                                 <label for="t_insta">Insta LINK</label>
-                                <input type="text" id="t_insta" name="t_insta" class="form-control">
+                                <input type="text" id="t_insta" name="t_insta" class="form-control" value="{{$team->t_insta}}">
                             </div>
-                                                        
+
                             <div class="form-group">
                                 <label for="t_fb">Facebook Link</label>
-                                <input type="text" id="t_fb" name="t_fb" class="form-control">
+                                <input type="text" id="t_fb" name="t_fb" class="form-control" value="{{$team->t_fb}}">
                             </div>
-                                                        
+
                             <div class="form-group">
                                 <label for="t_twit">Twitter Link</label>
-                                <input type="text" id="t_twit" name="t_twit" class="form-control">
+                                <input type="text" id="t_twit" name="t_twit" class="form-control" value="{{$team->t_twit}}">
                             </div>
 
 
@@ -570,6 +582,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
 
 
 
@@ -577,17 +590,18 @@
 
 
         <!-- delete modal -->
-        <div class="modal fade" id="myDeleteModal" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
+        @foreach($teams as $team)
+        <div class="modal fade" id="myDeleteModal{{$team->id}}" tabindex="-1" aria-labelledby="myDeleteModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myDeleteModal">Confirm Delete</h5>
+                        <h5 class="modal-title" id="myDeleteModal{{$team->id}}">Confirm Delete</h5>
                     </div>
                     <div class="modal-body">
                         Are you sure you want to delete this information?
                     </div>
                     <div class="modal-footer">
-                        <form action="" method="POST">
+                        <form action="{{route('deleteTeam', $team->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -598,6 +612,7 @@
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+        @endforeach
 
 
 

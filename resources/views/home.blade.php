@@ -110,6 +110,7 @@
         <a href="/" class="nav-item nav-link active">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -122,8 +123,8 @@
         <a href="/contact" class="nav-item nav-link">Contact</a>
       </div>
       <a
-        href="/test-cirtificate"
-        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Test Certificate<i class="fa fa-arrow-right ms-3"></i></a>
+        href="/blogs"
+        class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
@@ -137,8 +138,10 @@
   <div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="w-100" src="img/banner1.png" alt="Image" />
+
+        @foreach($bigbanners as $bigbanner)
+        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+          <img class="w-100" src="{{ asset('storage/' . $bigbanner->home_banner) }}" alt="Image" />
           <div class="carousel-caption">
             <div class="container">
               <div class="row justify-content-center">
@@ -146,7 +149,7 @@
                   <h1
                     class="display-1 text-white mb-5 animated slideInDown"
                     style="text-transform: capitalize">
-                    Powder coating on MS with 9 tank process system
+                    {{$bigbanner->home_banner_title}}
                   </h1>
                   <a href="" class="btn btn-primary py-sm-3 px-sm-4">Explore More</a>
                 </div>
@@ -154,23 +157,8 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <img class="w-100" src="img/banner2.jpg" alt="Image" />
-          <div class="carousel-caption">
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-7">
-                  <h1
-                    class="display-1 text-white mb-5 animated slideInDown"
-                    style="text-transform: capitalize">
-                    9 tank process for MS Materials
-                  </h1>
-                  <a href="" class="btn btn-primary py-sm-3 px-sm-4">Explore More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
+
       </div>
       <button
         class="carousel-control-prev"
@@ -265,7 +253,7 @@
           </div>
         </div>
 
-        
+
       </div>
     </div>
   </div>
@@ -280,22 +268,23 @@
   <div class="container-xxl py-5">
     <div class="container">
       <div class="row g-5 align-items-end">
+
+        @foreach($aboutDatas as $aboutData)
+
         <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
           <img
             class="img-fluid rounded"
             data-wow-delay="0.1s"
-            src="img/about.jpg" />
+            src="{{ asset('storage/' . $aboutData->about_image) }}" />
         </div>
         <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
-          <h1 class="display-1 text-primary mb-0">15</h1>
+          <h1 class="display-1 text-primary mb-0">{{$aboutData->about_ex}}</h1>
           <p class="text-primary mb-4">Year of Experience</p>
           <h1 class="display-5 mb-4">
-            Shaping Your Vision with Precision & Perfect Finish
+            {{$aboutData->about_title}}
           </h1>
           <p class="mb-4">
-            Experience the perfect blend of durability and aesthetics with our
-            premium powder coating services, designed to enhance and protect
-            your metal surfaces.
+            {{$aboutData->about_desc}}
           </p>
           <!-- <a class="btn btn-primary py-3 px-4" href="">Explore More</a> -->
         </div>
@@ -321,6 +310,9 @@
             </div>
           </div>
         </div>
+        @endforeach
+
+
       </div>
     </div>
   </div>
@@ -338,30 +330,36 @@
     data-image-src="img/banner2.jpg">
     <div class="container py-5">
       <div class="row g-5">
+
+
+        @foreach($aboutNums as $aboutNum)
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.1s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->clients}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Happy Clients</span>
         </div>
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.3s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->projects}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Project Complated</span>
         </div>
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.5s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->staff}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Dedicated Staff</span>
         </div>
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.7s">
-          <h1 class="display-4 text-white" data-toggle="counter-up">123</h1>
+          <h1 class="display-4 text-white" data-toggle="counter-up">{{$aboutNum->awards}}</h1>
           <span class="fs-5 fw-semi-bold text-light">Awards Achieved</span>
         </div>
+        @endforeach
+
+
       </div>
     </div>
   </div>
@@ -504,343 +502,126 @@
         <h1 class="display-5 mb-5">Services That We Offer For You</h1>
       </div>
       <div class="row g-4">
+
+        @foreach($services as $service)
         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
           <div class="service-item rounded d-flex h-100">
             <div class="service-img rounded">
-              <img class="img-fluid" src="img/s1.jpg" alt="" />
+              <img class="img-fluid" src="{{ asset('storage/' . $service->s_image) }}" alt="" />
             </div>
             <div class="service-text rounded p-5">
               <div class="btn-square rounded-circle mx-auto mb-3">
                 <img
                   class="img-fluid"
-                  src="img/icon/coating.png"
+                  src="{{ asset('storage/' . $service->s_icon) }}"
                   alt="Icon" />
               </div>
-              <h4 class="mb-3">MS Powder Coating</h4>
+              <h4 class="mb-3">{{$service->s_title}}</h4>
               <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
+                {{$service->s_s_desc}}
               </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
+              <a class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#myService{{$service->id}}"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
             </div>
           </div>
         </div>
+        @endforeach
 
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s2.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/door.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">Aluminium Powder Coating</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s3.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/steel.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">GI Powder Coating</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s4.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img
-                  class="img-fluid"
-                  src="img/icon/steel-plates.png"
-                  alt="Icon" />
-              </div>
-              <h4 class="mb-3">SS Powder Coating</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s11.png" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/panel.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">Panel Coating</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s12.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img
-                  class="img-fluid"
-                  src="img/icon/alloy-wheel.png"
-                  alt="Icon" />
-              </div>
-              <h4 class="mb-3">Automobile Parts Coating</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s13.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img
-                  class="img-fluid"
-                  src="img/icon/machine.png"
-                  alt="Icon" />
-              </div>
-              <h4 class="mb-3">Machinery Coating</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s5.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img
-                  class="img-fluid"
-                  src="img/icon/process.png"
-                  alt="Icon" />
-              </div>
-              <h4 class="mb-3">9 Tank Process</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s6.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/micron-test.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">Micron Test</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s7.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/scrach.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">Scrach Test</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s8.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/muscle.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">Durability Test</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s9.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img
-                  class="img-fluid"
-                  src="img/icon/rolled-steel.png"
-                  alt="Icon" />
-              </div>
-              <h4 class="mb-3">Sheet Bending</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="service-item rounded d-flex h-100">
-            <div class="service-img rounded">
-              <img class="img-fluid" src="img/s10.jpg" alt="" />
-            </div>
-            <div class="service-text rounded p-5">
-              <div class="btn-square rounded-circle mx-auto mb-3">
-                <img class="img-fluid" src="img/icon/pipe1.png" alt="Icon" />
-              </div>
-              <h4 class="mb-3">MS Pipe Bending</h4>
-              <p class="mb-4">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                lorem sed diam stet diam sed stet.
-              </p>
-              <a class="btn btn-sm" href="service-inner.html"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
   <!-- Service End -->
 
 
+  <!-- Single Service modal Start -->
+  @foreach($services as $service)
+  <div class="modal fade" id="myService{{$service->id}}" tabindex="-1" aria-labelledby="myServiceLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <div class="card mb-3">
+            <img src="{{ asset('storage/' . $service->s_image) }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                <img src="{{ asset('storage/' . $service->s_icon) }}" width="50" alt="">
+                {{$service->s_title}}
+              </h3>
+              <p class="card-text">{{$service->s_l_desc}}</p>
+              <p class="card-text"><small class="text-muted">Last updated {{$service->updated_at}} ago</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+  <!-- Single Service modal End -->
 
 
 
 
-  <!-- Quote Start -->
-  <!-- <div
+
+
+
+
+
+
+  <!-- Blogs Start -->
+  <div
     class="container-fluid quote my-5 py-5"
     data-parallax="scroll"
     data-image-src="img/banner2.jpg">
     <div class="container py-5">
       <div class="row justify-content-center">
-        <div class="col-lg-7">
+
+
+        <form action="{{route('addBlog')}}" method="POST" enctype="multipart/form-data" class="col-lg-7">
+          @csrf
           <div
             class="bg-white rounded p-4 p-sm-5 wow fadeIn"
             data-wow-delay="0.5s">
-            <h1 class="display-5 text-center mb-5">Get A Free Quote</h1>
+            <h1 class="display-5 text-center mb-5">Leave A Free Blog</h1>
             <div class="row g-3">
-              <div class="col-sm-6">
+
+
+              <div class="col-sm-12">
+                <div class="form-floating">
+                  <input
+                    type="file"
+                    class="form-control bg-light border-0"
+                    id="b_img" name="b_img" />
+                </div>
+                <small style="font-weight: 500; opacity: 0.7;">Must be less than 1.5MB (550x550)</small>
+              </div>
+
+
+              <div class="col-sm-12">
                 <div class="form-floating">
                   <input
                     type="text"
                     class="form-control bg-light border-0"
-                    id="gname"
-                    placeholder="Gurdian Name" />
-                  <label for="gname">Your Name</label>
+                    id="b_title" name="b_title"
+                    placeholder="Blog title" />
+                  <label for="b_title">Blog Title</label>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <div class="form-floating">
-                  <input
-                    type="email"
-                    class="form-control bg-light border-0"
-                    id="gmail"
-                    placeholder="Gurdian Email" />
-                  <label for="gmail">Your Email</label>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control bg-light border-0"
-                    id="cname"
-                    placeholder="Child Name" />
-                  <label for="cname">Your Mobile</label>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control bg-light border-0"
-                    id="cage"
-                    placeholder="Child Age" />
-                  <label for="cage">Service Type</label>
-                </div>
-              </div>
+
+
               <div class="col-12">
                 <div class="form-floating">
                   <textarea
                     class="form-control bg-light border-0"
-                    placeholder="Leave a message here"
-                    id="message"
+                    placeholder="Leave a blog description"
+                    id="b_message" name="b_message"
                     style="height: 100px"></textarea>
-                  <label for="message">Message</label>
+                  <label for="b_message">Blog Description</label>
                 </div>
               </div>
+
+
               <div class="col-12 text-center">
                 <button class="btn btn-primary py-3 px-4" type="submit">
                   Submit Now
@@ -848,11 +629,39 @@
               </div>
             </div>
           </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  <!-- Blogs End -->
+
+
+
+  <!-- success modal for blogs start -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Success</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h2 class="text-primary">Your blog has been added successfully!</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div> -->
-  <!-- Quote End -->
+  </div>
+  <!-- success modal for blogs end -->
+
+
+
+
+
 
 
 
@@ -880,97 +689,51 @@
       </div>
 
       <div class="row g-4 portfolio-container">
+
+
+
+        @foreach($gcs as $gc)
         <div
           class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp"
           data-wow-delay="0.1s">
           <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s1.jpg" alt="" />
+            <img class="img-fluid" src="{{ asset('storage/' . $gc->g_powder) }}" alt="" />
             <div class="portfolio-text">
-              <h4 class="text-white mb-4">MS Powder Coating</h4>
+              <h4 class="text-white mb-4">{{$gc->g_c_title}}</h4>
             </div>
           </div>
         </div>
+        @endforeach
 
+
+
+
+        @foreach($gbs as $gb)
         <div
           class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp"
           data-wow-delay="0.3s">
           <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s9.jpg" alt="" />
+            <img class="img-fluid" src="{{ asset('storage/' . $gb->g_bending) }}" alt="" />
             <div class="portfolio-text">
-              <h4 class="text-white mb-4">Sheet Bending</h4>
+              <h4 class="text-white mb-4">{{$gb->g_b_title}}</h4>
             </div>
           </div>
         </div>
+        @endforeach
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp"
-          data-wow-delay="0.5s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s2.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Aluminium Powder Coating</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s10.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">MS Pipe Bending</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp"
-          data-wow-delay="0.1s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s14.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">MS Pipe Bending</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp"
-          data-wow-delay="0.3s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s3.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">GI Powder Coating</h4>
-            </div>
-          </div>
-        </div>
 
-        <div
-          class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp"
-          data-wow-delay="0.3s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s4.jpg" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">SS Powder Coating</h4>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp"
-          data-wow-delay="0.3s">
-          <div class="portfolio-inner rounded">
-            <img class="img-fluid" src="img/s11.png" alt="" />
-            <div class="portfolio-text">
-              <h4 class="text-white mb-4">Panel Coating</h4>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
   <!-- Gallery End -->
+
+
+
+
+
 
 
 
@@ -984,30 +747,27 @@
     data-image-src="img/banner1.png">
     <div class="container py-5">
       <div class="row g-5">
+
+
+
+        @foreach($brands as $brand)
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.1s">
-          <img src="img/clients/ak1.png" width="240px" alt="" />
+          <img style="filter: drop-shadow(1px 1px 1px white);" src="{{ asset('storage/' . $brand->collab_company) }}" width="240px" alt="" />
         </div>
-        <div
-          class="col-sm-6 col-lg-3 text-center wow fadeIn"
-          data-wow-delay="0.3s">
-          <img src="img/clients/jo1.png" width="240px" alt="" />
-        </div>
-        <div
-          class="col-sm-6 col-lg-3 text-center wow fadeIn"
-          data-wow-delay="0.5s">
-          <img src="img/clients/b2.png" width="240px" alt="" />
-        </div>
-        <div
-          class="col-sm-6 col-lg-3 text-center wow fadeIn"
-          data-wow-delay="0.7s">
-          <img src="img/clients/asi2.png" width="240px" alt="" />
-        </div>
+        @endforeach
+
+
+
       </div>
     </div>
   </div>
   <!-- Best Powder Brands End -->
+
+
+
+
 
 
 
@@ -1025,48 +785,24 @@
         <h1 class="display-5 mb-5">Dedicated & Experienced Team Members</h1>
       </div>
       <div class="row g-4">
+
+        @foreach($teams as $team)
         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
           <div class="team-item rounded">
-            <img class="img-fluid" src="img/t1.jpg" alt="" />
+            <img class="img-fluid" src="{{ asset('storage/' . $team->t_img) }}" alt="" />
             <div class="team-text">
-              <h4 class="mb-0">Saklin Mustak</h4>
-              <p class="text-primary">Web Developer</p>
+              <h4 class="mb-0">{{$team->t_name}}</h4>
+              <p class="text-primary">{{$team->t_prof}}</p>
               <div class="team-social d-flex">
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-square rounded-circle me-2" href="{{$team->t_fb}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square rounded-circle me-2" href="{{$team->t_twit}}" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-square rounded-circle me-2" href="{{$team->t_insta}}" target="_blank"><i class="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="team-item rounded">
-            <img class="img-fluid" src="img/t1.jpg" alt="" />
-            <div class="team-text">
-              <h4 class="mb-0">Saklin Mustak</h4>
-              <p class="text-primary">Software Developer</p>
-              <div class="team-social d-flex">
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div class="team-item rounded">
-            <img class="img-fluid" src="img/t1.jpg" alt="" />
-            <div class="team-text">
-              <h4 class="mb-0">Saklin Mustak</h4>
-              <p class="text-primary">Full Stack Developer</p>
-              <div class="team-social d-flex">
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
+
       </div>
     </div>
   </div>
@@ -1081,6 +817,8 @@
   <div class="container-xxl py-5">
     <div class="container">
       <div class="row g-5">
+
+
         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
           <p class="fs-5 fw-bold text-primary">Testimonial</p>
           <h1 class="display-5 mb-5">What Our Clients Say About Us!</h1>
@@ -1091,65 +829,35 @@
           </p>
           <!-- <a class="btn btn-primary py-3 px-4" href="">See More</a> -->
         </div>
+
+
+
         <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
           <div class="owl-carousel testimonial-carousel">
+
+          @foreach($tsts as $tst)
+
+          
             <div class="testimonial-item">
               <img
                 class="img-fluid rounded mb-3"
-                src="img/testimonial1.jpg"
+                src="{{ asset('storage/' . $tst->tst_img) }}"
                 alt="" />
               <p class="fs-5">
-                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                et labore et tempor diam tempor erat.
+                {{$tst->tst_msg}}
               </p>
-              <h4>Client Name</h4>
-              <span>Profession</span>
+              <h4>{{$tst->tst_name}}</h4>
+              <span>{{$tst->tst_prof}}</span>
             </div>
 
-            <div class="testimonial-item">
-              <img
-                class="img-fluid rounded mb-3"
-                src="img/testimonial1.jpg"
-                alt="" />
-              <p class="fs-5">
-                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                et labore et tempor diam tempor erat.
-              </p>
-              <h4>Client Name</h4>
-              <span>Profession</span>
-            </div>
+            
+            @endforeach
 
-            <div class="testimonial-item">
-              <img
-                class="img-fluid rounded mb-3"
-                src="img/testimonial1.jpg"
-                alt="" />
-              <p class="fs-5">
-                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                et labore et tempor diam tempor erat.
-              </p>
-              <h4>Client Name</h4>
-              <span>Profession</span>
-            </div>
-
-            <div class="testimonial-item">
-              <img
-                class="img-fluid rounded mb-3"
-                src="img/testimonial1.jpg"
-                alt="" />
-              <p class="fs-5">
-                Dolores sed duo clita tempor justo dolor et stet lorem kasd
-                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
-                et labore et tempor diam tempor erat.
-              </p>
-              <h4>Client Name</h4>
-              <span>Profession</span>
-            </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
   </div>
@@ -1278,6 +986,36 @@
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if ("{{ session('success') }}") {
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+      }
+    });
+  </script>
 </body>
 
 </html>

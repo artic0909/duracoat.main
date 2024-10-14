@@ -224,6 +224,8 @@
                         <div class="collapse" id="ui-basic1111">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/admin-services">Services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-ral">RAL</a></li>
+
                             </ul>
                         </div>
                     </li>
@@ -294,6 +296,15 @@
                         <a class="nav-link" href="/admin-testimonial">
                             <i class="icon-contract menu-icon"></i>
                             <span class="menu-title">Testimonial</span>
+                        </a>
+                    </li>
+
+
+                    <!-- Blogs -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-blogs">
+                            <i class="icon-contract menu-icon"></i>
+                            <span class="menu-title">Blogs</span>
                         </a>
                     </li>
 
@@ -474,7 +485,7 @@
 
 
         <!-- edit modal -->
-         @foreach($otherBanners as $otherBanner)
+        @foreach($otherBanners as $otherBanner)
         <div class="modal" id="myEditModal{{$otherBanner->id}}">
             <div class="modal-dialog">
                 <div class="modal-content">
