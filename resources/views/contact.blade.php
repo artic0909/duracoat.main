@@ -65,22 +65,26 @@
   <div class="container-fluid bg-dark text-light px-0 py-2">
     <div class="row gx-0 d-none d-lg-flex">
       <div class="col-lg-7 px-5 text-start">
+
+        @foreach($contacts as $contact)
         <div class="h-100 d-inline-flex align-items-center me-4">
           <span class="fa fa-phone-alt me-2"></span>
-          <span><a href="tel:9088511511" style="color: white">+91 9088511511</a></span>
+          <span><a href="tel:{{$contact->c_number}}" style="color: white">+91 {{$contact->c_number}}</a></span>
         </div>
         <div class="h-100 d-inline-flex align-items-center">
           <span class="far fa-envelope me-2"></span>
-          <span><a href="mailto:duracoat40@gmail.com" style="color: white">duracoat40@gmail.com</a></span>
+          <span><a href="mailto:{{$contact->c_email}}" style="color: white">{{$contact->c_email}}</a></span>
         </div>
+        @endforeach
+
       </div>
       <div class="col-lg-5 px-5 text-end">
         <div class="h-100 d-inline-flex align-items-center mx-n2">
           <span>Follow Us:</span>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-link text-light"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-link text-light" href="https://x.com/duracoat_9tank" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-link text-light" href="https://www.linkedin.com/mynetwork/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-link text-light" href="https://www.instagram.com/duracoat_9tankprocess/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
@@ -294,59 +298,61 @@
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-4">DURA COAT</h4>
           <p class="mb-2">
-            <i class="fa fa-map-marker-alt me-3"></i>Sankrail Industrial Park,
-            Dhulagarh, Howrah, WB-711302
+            <i class="fa fa-map-marker-alt me-3"></i><a href="https://maps.app.goo.gl/WwfSBKNWsoQ5ULXWA" target="_blank" style="color: white;">Sankrail Industrial Park, Dhulagarh, Howrah, WB-711302</a>
+          </p>
+
+          @foreach($contacts as $contact)
+          <p class="mb-2">
+            <i class="fa fa-phone-alt me-3"></i><a href="tel:{{$contact->c_number}}" style="color: white;">+91 {{$contact->c_number}}</a>
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i><a href="tel:7605034979" style="color: white">+91 7605034979</a>
+            <i class="fa fa-phone-alt me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i><a href="tel:9088511511" style="color: white">+91 9088511511</a>
+            <i class="fa fa-envelope me-3"></i><a href="mailto:{{$contact->c_email}}" style="color: white;">{{$contact->c_email}}</a>
           </p>
-          <p class="mb-2">
-            <i class="fa fa-envelope me-3"></i><a href="mailto:duracoat40@gmail.com" style="color: white">duracoat40@gmail.com</a>
-          </p>
+          @endforeach
+
           <div class="d-flex pt-2">
             <a
               class="btn btn-square btn-outline-light rounded-circle me-2"
-              href=""><i class="fab fa-twitter"></i></a>
+              href="https://x.com/duracoat_9tank" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a
+              class="btn btn-square btn-outline-light rounded-circle me-2"><i class="fab fa-facebook-f"></i></a>
             <a
               class="btn btn-square btn-outline-light rounded-circle me-2"
-              href=""><i class="fab fa-facebook-f"></i></a>
+              href="https://www.instagram.com/duracoat_9tankprocess/" target="_blank"><i class="fab fa-instagram"></i></a>
             <a
               class="btn btn-square btn-outline-light rounded-circle me-2"
-              href=""><i class="fab fa-youtube"></i></a>
-            <a
-              class="btn btn-square btn-outline-light rounded-circle me-2"
-              href=""><i class="fab fa-linkedin-in"></i></a>
+              href="https://www.linkedin.com/mynetwork/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-4">Coating Services</h4>
-          <a class="btn btn-link" href="">MS Powder Coating</a>
-          <a class="btn btn-link" href="">Aluminium Powder Coating</a>
-          <a class="btn btn-link" href="">GI Coating</a>
-          <a class="btn btn-link" href="">SS Powder Coating</a>
-          <a class="btn btn-link" href="">Panel Coating</a>
-          <a class="btn btn-link" href="">Automobile Parts Coating</a>
+          <a class="btn btn-link">MS Powder Coating</a>
+          <a class="btn btn-link">Aluminium Powder Coating</a>
+          <a class="btn btn-link">GI Coating</a>
+          <a class="btn btn-link">SS Powder Coating</a>
+          <a class="btn btn-link">Panel Coating</a>
+          <a class="btn btn-link">Automobile Parts Coating</a>
         </div>
 
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-4">Bending Service</h4>
-          <a class="btn btn-link" href="">Sheet Bending</a>
-          <a class="btn btn-link" href="">MS Pipe Bending</a>
-          <a class="btn btn-link" href="">Rectangular Tube</a>
-          <a class="btn btn-link" href="">Square Tube</a>
-          <a class="btn btn-link" href="">Round Pipe</a>
+          <a class="btn btn-link">Sheet Bending</a>
+          <a class="btn btn-link">MS Pipe Bending</a>
+          <a class="btn btn-link">Rectangular Tube</a>
+          <a class="btn btn-link">Square Tube</a>
+          <a class="btn btn-link">Round Pipe</a>
         </div>
 
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-4">Our Testings</h4>
-          <a class="btn btn-link" href="">9 Tanks Process</a>
-          <a class="btn btn-link" href="">Micron Test</a>
-          <a class="btn btn-link" href="">Scrach Test</a>
-          <a class="btn btn-link" href="">Durability Test</a>
-          <a class="btn btn-link" href="">Support</a>
+          <a class="btn btn-link" href="/test-cirtificate">9 Tanks Process</a>
+          <a class="btn btn-link" href="/test-cirtificate">Micron Test</a>
+          <a class="btn btn-link" href="/test-cirtificate">Scrach Test</a>
+          <a class="btn btn-link" href="/test-cirtificate">Durability Test</a>
+          <a class="btn btn-link" href="/contact">Support</a>
         </div>
       </div>
     </div>

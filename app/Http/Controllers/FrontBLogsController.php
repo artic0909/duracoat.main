@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminBlogsModel;
+use App\Models\AdminCompanyDetailsModel;
 use App\Models\AdminOtherBannerModel;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,8 @@ class FrontBLogsController extends Controller
     {
         $otherbanners = AdminOtherBannerModel::all();
         $blogs = AdminBlogsModel::orderBy('created_at', 'desc')->get();
-        return view('blog', compact('otherbanners', 'blogs'));
+        $contacts = AdminCompanyDetailsModel::all();
+
+        return view('blog', compact('otherbanners', 'blogs', 'contacts'));
     }
 }

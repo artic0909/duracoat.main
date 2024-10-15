@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AdminCompanyDetailsModel;
 use App\Models\AdminContactModel;
 use App\Models\AdminOtherBannerModel;
 use Illuminate\Http\Request;
@@ -13,7 +14,9 @@ class FrontContactController extends Controller
     public function getContact()
     {
         $otherbanners = AdminOtherBannerModel::all();
-        return view('contact', compact('otherbanners'));
+        $contacts = AdminCompanyDetailsModel::all();
+
+        return view('contact', compact('otherbanners', 'contacts'));
     }
 
 

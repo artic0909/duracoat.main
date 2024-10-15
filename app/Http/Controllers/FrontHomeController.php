@@ -6,6 +6,8 @@ use App\Models\AdminAboutDataModel;
 use App\Models\AdminAboutNumberModel;
 use App\Models\AdminBlogsModel;
 use App\Models\AdminCollabCompanyModel;
+use App\Models\AdminCompanyDetailsModel;
+use App\Models\AdminContactModel;
 use App\Models\AdminGalleryBendingModel;
 use App\Models\AdminGalleryCoatingModel;
 use App\Models\AdminHomeBannerModel;
@@ -31,7 +33,8 @@ class FrontHomeController extends Controller
         $brands = AdminCollabCompanyModel::all();
         $teams = AdminTeamsModel::all();
         $tsts = AdminTestimonialModel::all();
-        return view('home', compact('bigbanners', 'aboutDatas', 'aboutNums', 'services', 'gcs', 'gbs', 'brands', 'teams', 'tsts'));
+        $contacts = AdminCompanyDetailsModel::all();
+        return view('home', compact('bigbanners', 'aboutDatas', 'aboutNums', 'services', 'gcs', 'gbs', 'brands', 'teams', 'tsts', 'contacts'));
     }
 
 

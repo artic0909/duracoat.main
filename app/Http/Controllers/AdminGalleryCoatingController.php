@@ -9,7 +9,7 @@ class AdminGalleryCoatingController extends Controller
 {
     public function getGC()
     {
-        $gcs = AdminGalleryCoatingModel::all();
+        $gcs = AdminGalleryCoatingModel::orderBy('created_at', 'desc')->get();
         return view('admin.admin-gallery-coating', compact('gcs'));
     }
 

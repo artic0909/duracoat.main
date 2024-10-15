@@ -243,9 +243,7 @@ Route::delete('/customer-support/delete/{id}', [AdminSupportController::class, '
 Route::get('/', [FrontHomeController::class, 'getAll'])->name('getAll');
 Route::post('/', [FrontHomeController::class, 'addBlog'])->name('addBlog');
 
-
 Route::get('/about', [FrontAboutController::class, 'getAllAbout'])->name('getAllAbout');
-
 
 Route::get('/clients', [FrontClientsController::class, 'getAllClients'])->name('getAllClients');
 
@@ -254,7 +252,6 @@ Route::get('/test-cirtificate', [FrontTestCirController::class, 'getAllTestCir']
 Route::get('/ral', [FrontRALController::class, 'getAllRAL'])->name('getAllRAL');
 
 Route::get('/blogs', [FrontBLogsController::class, 'getAllBlogs'])->name('getAllBlogs');
-
 
 Route::get('/contact', [FrontContactController::class, 'getContact'])->name('getContact');
 Route::post('/contact', [FrontContactController::class, 'addContact'])->name('addContact');

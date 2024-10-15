@@ -9,7 +9,7 @@ class AdminGalleryBendingController extends Controller
 {
     public function getGB()
     {
-        $gbs = AdminGalleryBendingModel::all();
+        $gbs = AdminGalleryBendingModel::orderBy('created_at', 'desc')->get();
         return view('admin.admin-gallery-bending', compact('gbs'));
     }
 

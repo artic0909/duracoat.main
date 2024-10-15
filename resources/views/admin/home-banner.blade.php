@@ -181,7 +181,7 @@
                     <!-- Banners -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="icon-layout menu-icon"></i>
+                            <i class="fa-solid fa-images"></i> &nbsp;
                             <span class="menu-title">Banners</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -199,7 +199,7 @@
                     <!-- About Section -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic11" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="icon-bar-graph menu-icon"></i>
+                            <i class="fa-solid fa-circle-question"></i> &nbsp;
                             <span class="menu-title">About</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -217,7 +217,7 @@
                     <!-- Services -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic1111" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="icon-grid-2 menu-icon"></i>
+                            <i class="fa-solid fa-people-carry-box"></i> &nbsp;
                             <span class="menu-title">Service</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -238,7 +238,7 @@
                     <!-- Gallery -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic10" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="icon-layout menu-icon"></i>
+                            <i class="fa-solid fa-camera-retro"></i> &nbsp;
                             <span class="menu-title">Gallery</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -255,19 +255,13 @@
 
 
 
-                    <!-- Quote Collection -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/admin-quote">
-                            <i class="icon-contract menu-icon"></i>
-                            <span class="menu-title">Quote</span>
-                        </a>
-                    </li> -->
+
 
 
                     <!-- Best Powder Company -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic103" aria-expanded="false" aria-controls="ui-basic">
-                            <i class="icon-contract menu-icon"></i>
+                            <i class="fa-solid fa-city"></i> &nbsp;
                             <span class="menu-title">Companies</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -275,6 +269,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="/admin-collab">Collab Companies</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/admin-clients">Our Clients</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/company-details">Our Details</a></li>
                             </ul>
                         </div>
                     </li>
@@ -284,7 +279,7 @@
                     <!-- Expert Team -->
                     <li class="nav-item">
                         <a class="nav-link" href="/admin-team">
-                            <i class="icon-contract menu-icon"></i>
+                            <i class="fa-solid fa-users"></i> &nbsp;
                             <span class="menu-title">Team Members</span>
                         </a>
                     </li>
@@ -294,7 +289,7 @@
                     <!-- Testimonial -->
                     <li class="nav-item">
                         <a class="nav-link" href="/admin-testimonial">
-                            <i class="icon-contract menu-icon"></i>
+                            <i class="fa-solid fa-quote-left"></i> &nbsp;
                             <span class="menu-title">Testimonial</span>
                         </a>
                     </li>
@@ -303,7 +298,7 @@
                     <!-- Blogs -->
                     <li class="nav-item">
                         <a class="nav-link" href="/admin-blogs">
-                            <i class="icon-contract menu-icon"></i>
+                            <i class="fa-brands fa-blogger-b"></i> &nbsp;
                             <span class="menu-title">Blogs</span>
                         </a>
                     </li>
@@ -313,7 +308,7 @@
                     <!-- Customer Support -->
                     <li class="nav-item">
                         <a class="nav-link" href="/customer-support">
-                            <i class="icon-head menu-icon"></i>
+                            <i class="fa-solid fa-headset"></i> &nbsp;
                             <span class="menu-title">Customer Support</span>
                         </a>
                     </li>
