@@ -9,7 +9,7 @@
   <meta name="description" content="Learn more about Dura Coat, industry leaders in powder coating, bending and surface finishing. Our expertise ensures high-quality, durable coatings for industrial, commercial, and custom applications." />
 
   <!-- Favicon -->
-  <link href="img/logoIcon.png" rel="icon" />
+  <link href="img/logoIcon5.png" rel="icon" />
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -117,7 +117,7 @@
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link active">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
-        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -377,7 +377,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <h4 class="text-white mb-4">Our Testings</h4>
+          <h4 class="text-white mb-4">Our Testing</h4>
           <a class="btn btn-link" href="/test-cirtificate">9 Tanks Process</a>
           <a class="btn btn-link" href="/test-cirtificate">Micron Test</a>
           <a class="btn btn-link" href="/test-cirtificate">Scrach Test</a>

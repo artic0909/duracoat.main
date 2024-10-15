@@ -9,7 +9,7 @@
     <meta name="description" content="Dura Coat specializes in delivering top-quality powder coating services, offering a wide range of durable and aesthetically appealing finishes for metal surfaces. Our expertise covers custom powder coating solutions for GI, MS, and SS materials, ensuring superior corrosion resistance and long-lasting protection. With an extensive selection of RAL colors and custom color-matching options, we cater to both industrial and commercial applications, providing high-performance metal coatings for various sectors. Our expert team ensures precision and quality in every project, making Dura Coat the preferred choice for reliable and professional powder coating solutions." />
 
     <!-- Favicon -->
-    <link href="img/logoIcon.png" rel="icon" />
+    <link href="img/logoIcon5.png" rel="icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -118,7 +118,7 @@
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="/about" class="nav-item nav-link">About</a>
                 <a href="/clients" class="nav-item nav-link">Clients</a>
-                <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
+                <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
                 <a href="/ral" class="nav-item nav-link">RAL</a>
                 <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -330,7 +330,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Our Testings</h4>
+                    <h4 class="text-white mb-4">Our Testing</h4>
                     <a class="btn btn-link" href="/test-cirtificate">9 Tanks Process</a>
                     <a class="btn btn-link" href="/test-cirtificate">Micron Test</a>
                     <a class="btn btn-link" href="/test-cirtificate">Scrach Test</a>

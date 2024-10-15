@@ -9,7 +9,7 @@
   <meta name="description" content="Dura Coat offers professional powder coating services with durable and high-quality finishes. Explore a wide range of RAL colors and custom solutions for superior metal protection and aesthetic appeal. Perfect for industrial and commercial applications." />
 
   <!-- Favicon -->
-  <link href="img/logoIcon.png" rel="icon" />
+  <link href="img/logoIcon5.png" rel="icon" />
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -114,7 +114,7 @@
         <a href="/" class="nav-item nav-link active">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
         <a href="/clients" class="nav-item nav-link">Clients</a>
-        <a href="/test-cirtificate" class="nav-item nav-link">Testings</a>
+        <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -698,7 +698,7 @@
 
         @foreach($gcs as $gc)
         <div
-          class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp"
+          class="col-lg-3 col-md-4 portfolio-item first wow fadeInUp"
           data-wow-delay="0.1s">
           <div class="portfolio-inner rounded">
             <img class="img-fluid" src="{{ asset('storage/' . $gc->g_powder) }}" alt="" />
@@ -714,7 +714,7 @@
 
         @foreach($gbs as $gb)
         <div
-          class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp"
+          class="col-lg-3 col-md-4 portfolio-item second wow fadeInUp"
           data-wow-delay="0.3s">
           <div class="portfolio-inner rounded">
             <img class="img-fluid" src="{{ asset('storage/' . $gb->g_bending) }}" alt="" />
@@ -747,8 +747,8 @@
   <!-- Best Powder Brands Start -->
   <div
     class="container-fluid facts my-5 py-5"
-    data-parallax="scroll"
-    data-image-src="img/banner1.png">
+    
+    style="background-color: #F5F5F5;">
     <div class="container py-5">
       <div class="row g-5">
 
@@ -758,7 +758,7 @@
         <div
           class="col-sm-6 col-lg-3 text-center wow fadeIn"
           data-wow-delay="0.1s">
-          <img style="filter: drop-shadow(1px 1px 1px white);" src="{{ asset('storage/' . $brand->collab_company) }}" width="240px" alt="" />
+          <img style="filter: drop-shadow(1px 1px 1px black);" src="{{ asset('storage/' . $brand->collab_company) }}" width="240px" alt="" />
         </div>
         @endforeach
 
@@ -931,7 +931,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <h4 class="text-white mb-4">Our Testings</h4>
+          <h4 class="text-white mb-4">Our Testing</h4>
           <a class="btn btn-link" href="/test-cirtificate">9 Tanks Process</a>
           <a class="btn btn-link" href="/test-cirtificate">Micron Test</a>
           <a class="btn btn-link" href="/test-cirtificate">Scrach Test</a>

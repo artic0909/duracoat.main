@@ -21,7 +21,7 @@
     <!-- endinject -->
 
     <!-- icon -->
-    <link rel="icon" href="img/logoicon.png" type="image/png">
+    <link rel="icon" href="img/logoIcon5.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
@@ -91,7 +91,7 @@
                     <!-- logout -->
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{asset('img/logoicon.png')}}" alt="profile" />
+                            <img src="{{asset('img/logoIcon5.png')}}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
 
