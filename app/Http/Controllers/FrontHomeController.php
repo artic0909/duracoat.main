@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AdminAboutDataModel;
 use App\Models\AdminAboutNumberModel;
+use App\Models\AdminBendingServiceModel;
 use App\Models\AdminBlogsModel;
 use App\Models\AdminCollabCompanyModel;
 use App\Models\AdminCompanyDetailsModel;
@@ -28,13 +29,14 @@ class FrontHomeController extends Controller
         $aboutDatas = AdminAboutDataModel::all();
         $aboutNums = AdminAboutNumberModel::all();
         $services = AdminServiceModel::all();
+        $bservices = AdminBendingServiceModel::all();
         $gcs = AdminGalleryCoatingModel::all();
         $gbs = AdminGalleryBendingModel::all();
         $brands = AdminCollabCompanyModel::all();
         $teams = AdminTeamsModel::all();
         $tsts = AdminTestimonialModel::all();
         $contacts = AdminCompanyDetailsModel::all();
-        return view('home', compact('bigbanners', 'aboutDatas', 'aboutNums', 'services', 'gcs', 'gbs', 'brands', 'teams', 'tsts', 'contacts'));
+        return view('home', compact('bigbanners', 'aboutDatas', 'aboutNums', 'services', 'bservices', 'gcs', 'gbs', 'brands', 'teams', 'tsts', 'contacts'));
     }
 
 

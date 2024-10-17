@@ -67,7 +67,7 @@ class AdminAboutDataController extends Controller
                 $file = $request->file('about_image');
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $filePath = $file->storeAs('uploads/aboutdata', $fileName, 'public');
-                $aboutDataInfo->home_banner = $filePath;
+                $aboutDataInfo->about_image = $filePath;
             }
 
             $aboutDataInfo->about_title = $request->input('about_title');

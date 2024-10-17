@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminAboutDataController;
 use App\Http\Controllers\AdminAboutNumberController;
+use App\Http\Controllers\AdminBendingServiceController;
 use App\Http\Controllers\AdminBlogsController;
 use App\Http\Controllers\AdminClientsController;
 use App\Http\Controllers\AdminCollabCompanyController;
@@ -16,8 +17,10 @@ use App\Http\Controllers\AdminSupportController;
 use App\Http\Controllers\AdminTeamsController;
 use App\Http\Controllers\AdminTestimonialController;
 use App\Http\Controllers\FrontAboutController;
+use App\Http\Controllers\FrontBendingServiceController;
 use App\Http\Controllers\FrontBLogsController;
 use App\Http\Controllers\FrontClientsController;
+use App\Http\Controllers\FrontCoatingServiceController;
 use App\Http\Controllers\FrontContactController;
 use App\Http\Controllers\FrontHomeController;
 use App\Http\Controllers\FrontRALController;
@@ -73,6 +76,11 @@ Route::get('/admin-numbers', function () {
 Route::get('/admin-services', function () {
     return view('admin.admin-services');
 })->middleware(['auth', 'verified'])->name('admin-services');
+
+
+Route::get('/admin-bendingservices', function () {
+    return view('admin.admin-bendingservice');
+})->middleware(['auth', 'verified'])->name('admin-bendingservice');
 
 
 Route::get('/admin-gallery-coating', function () {
@@ -179,6 +187,12 @@ Route::put('/admin-services/edit/{id}', [AdminServiceController::class, 'editSer
 Route::delete('/admin-services/delete/{id}', [AdminServiceController::class, 'deleteService'])->name('deleteService');
 
 
+Route::get('/admin-bendingservices', [AdminBendingServiceController::class, 'getbService'])->name('getbService');
+Route::post('/admin-bendingservices/add', [AdminBendingServiceController::class, 'addbService'])->name('addbService');
+Route::put('/admin-bendingservices/edit/{id}', [AdminBendingServiceController::class, 'editbService'])->name('editbService');
+Route::delete('/admin-bendingservices/delete/{id}', [AdminBendingServiceController::class, 'deletebService'])->name('deletebService');
+
+
 Route::get('/admin-gallery-coating', [AdminGalleryCoatingController::class, 'getGC'])->name('getGC');
 Route::post('/admin-gallery-coating/add', [AdminGalleryCoatingController::class, 'addGC'])->name('addGC');
 Route::put('/admin-gallery-coating/edit/{id}', [AdminGalleryCoatingController::class, 'editGC'])->name('editGC');
@@ -244,6 +258,10 @@ Route::get('/', [FrontHomeController::class, 'getAll'])->name('getAll');
 Route::post('/', [FrontHomeController::class, 'addBlog'])->name('addBlog');
 
 Route::get('/about', [FrontAboutController::class, 'getAllAbout'])->name('getAllAbout');
+
+Route::get('/coating-service', [FrontCoatingServiceController::class, 'getAllCoating'])->name('getAllCoating');
+
+Route::get('/bending-service', [FrontBendingServiceController::class, 'getAllBending'])->name('getAllBending');
 
 Route::get('/clients', [FrontClientsController::class, 'getAllClients'])->name('getAllClients');
 

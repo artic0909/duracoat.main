@@ -223,7 +223,8 @@
                         </a>
                         <div class="collapse" id="ui-basic1111">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="/admin-services">Services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-services">Coating Service</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-bendingservices">Bending Service</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/admin-ral">RAL</a></li>
 
                             </ul>
@@ -338,7 +339,7 @@
                         <div class="col-md-12 grid-margin">
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                    <h3 class="font-weight-bold">Services</h3>
+                                    <h3 class="font-weight-bold">Powder Coating Services</h3>
                                 </div>
 
 
@@ -457,7 +458,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Add About</h4>
+                        <h4 class="modal-title">Add Coating Service</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
@@ -517,7 +518,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit About</h4>
+                        <h4 class="modal-title">Edit Coating Service</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 

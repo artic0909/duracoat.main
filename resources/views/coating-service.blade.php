@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Blogs | Expert Powder Coating Services for Durable Metal Finishes</title>
+    <meta charset="utf-8" />
+    <title>Powder Coating Services - Dura Coat | Powder Coating & Bending Experts</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="keywords" content="Powder coating solutions, professional powder coating services, Dura Coat powder coating, RAL powder coating colors, custom powder coating finishes, industrial powder coating applications, durable powder coating experts, GI powder coating services, MS powder coating services, SS powder coating solutions, metal powder coating experts, high-quality metal finishing, corrosion-resistant powder coatings, powder coating for sheet metal, protective powder coating finishes, aesthetic metal finishes, powder coating specialists, durable metal protection, industrial and commercial coating services, custom metal powder coating, metal surface coating solutions" />
-    <meta name="description" content="Dura Coat specializes in delivering top-quality powder coating services, offering a wide range of durable and aesthetically appealing finishes for metal surfaces. Our expertise covers custom powder coating solutions for GI, MS, and SS materials, ensuring superior corrosion resistance and long-lasting protection. With an extensive selection of RAL colors and custom color-matching options, we cater to both industrial and commercial applications, providing high-performance metal coatings for various sectors. Our expert team ensures precision and quality in every project, making Dura Coat the preferred choice for reliable and professional powder coating solutions." />
+    <meta name="keywords" content="about Dura Coat, gi powder coating experts, ms powder coating experts, ss powder coating experts, ms bending service, asp bending service, powder coating experts, surface finishing, metal coating specialists, powder coating services, custom coating solutions, industrial coating, protective finishes, durable coatings, RAL powder coating" />
+    <meta name="description" content="Learn more about Dura Coat, industry leaders in powder coating, bending and surface finishing. Our expertise ensures high-quality, durable coatings for industrial, commercial, and custom applications." />
 
     <!-- Favicon -->
     <link href="img/logoIcon5.png" rel="icon" />
@@ -39,7 +39,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -69,7 +69,7 @@
 
                 @foreach($contacts as $contact)
                 <div class="h-100 d-inline-flex align-items-center me-4">
-                    <span class="fa fa-phone-alt me-2"></span>
+                    <span class="fa fa-phone me-2"></span>
                     <span><a href="tel:{{$contact->c_number}}" style="color: white">+91 {{$contact->c_number}}</a></span>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
@@ -117,32 +117,39 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="/about" class="nav-item nav-link">About</a>
+
+
+
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Services</a>
                     <div class="dropdown-menu bg-light m-0">
                         <a href="/coating-service" class="dropdown-item">Powder Coating</a>
                         <a href="/bending-service" class="dropdown-item">Bending Service</a>
                     </div>
                 </div>
+
+
+
+
+
                 <a href="/clients" class="nav-item nav-link">Clients</a>
                 <!-- <a href="/test-cirtificate" class="nav-item nav-link">Testing</a> -->
                 <a href="/ral" class="nav-item nav-link">RAL</a>
-                <!-- <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
-                    <div class="dropdown-menu bg-light m-0">
-                        <a href="feature.html" class="dropdown-item">Powder Coating</a>
-                        <a href="quote.html" class="dropdown-item">Bending</a>
-                        <a href="team.html" class="dropdown-item">Machinery</a>
-                    </div>
-                </div> -->
+
+
+
                 <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
             <a
                 href="/blogs"
-                class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block active">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
+                class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Popular Blogs<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
+
+
+
+
 
 
 
@@ -156,15 +163,11 @@
      url('{{ asset('storage/' . $otherbanner->other_banner) }}') center center no-repeat;
      background-size: cover;">
         <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">
-                Blogs
-            </h1>
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Powder Coating With 9 Tank Process</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        Blogs
-                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Coating Service</li>
                 </ol>
             </nav>
         </div>
@@ -179,77 +182,63 @@
 
 
 
-    <!-- Blogs view Start -->
-    @foreach($blogs as $blog)
+    <!-- Service Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="row g-5 align-items-end">
-                <div class="col-lg-3 col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <img
-                        class="img-fluid rounded"
-                        data-wow-delay="0.1s"
-                        src="{{ asset('storage/' . $blog->b_img) }}" />
-                </div>
-                <div class="col-lg-8 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
+            <div
+                class="text-center mx-auto wow fadeInUp"
+                data-wow-delay="0.1s"
+                style="max-width: 500px">
+                <p class="fs-5 fw-bold text-primary">Our Services</p>
+                <h1 class="display-5 mb-5">Services That We Offer For You</h1>
+            </div>
+            <div class="row g-4">
 
-                    <h1 class="display-5 mb-4">
-                        {{$blog->b_title}}
-                    </h1>
-                    <p class="mb-4" style="text-align: justify;">
-                        {{$blog->b_message}}
-                        <br>
-                        <small class="text-muted">Last updated {{$blog->updated_at}} ago</small>
-                    </p>
-
-                    <a class="btn btn-primary py-3 px-4" data-bs-toggle="modal" data-bs-target="#myBlog{{$blog->id}}">Read More</a>
-                </div>
-                <!-- <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="row g-5">
-                        <div class="col-12 col-sm-6 col-lg-12">
-                            <div class="border-start ps-4">
-                                <i class="fa fa-award fa-3x text-primary mb-3"></i>
-                                <h4 class="mb-3">Award Winning</h4>
-                                <span>DURA COAT proudly offers award-winning powder coating and
-                                    ASP bending services, delivering unmatched quality and
-                                    innovation to elevate your projects.</span>
-                            </div>
+                @foreach($services as $service)
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded d-flex h-100">
+                        <div class="service-img rounded">
+                            <img class="img-fluid" src="{{ asset('storage/' . $service->s_image) }}" alt="" />
                         </div>
-                        <div class="col-12 col-sm-6 col-lg-12">
-                            <div class="border-start ps-4">
-                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
-                                <h4 class="mb-3">Dedicated Labours</h4>
-                                <span>Our skilled team at DURA COAT is dedicated to delivering
-                                    top-quality powder coating and ASP bending services,
-                                    ensuring precision and durability in every project</span>
+                        <div class="service-text rounded p-5">
+                            <div class="btn-square rounded-circle mx-auto mb-3">
+                                <img
+                                    class="img-fluid"
+                                    src="{{ asset('storage/' . $service->s_icon) }}"
+                                    alt="Icon" />
                             </div>
+                            <h4 class="mb-3">{{$service->s_title}}</h4>
+                            <p class="mb-4">
+                                {{$service->s_s_desc}}
+                            </p>
+                            <a class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#myService{{$service->id}}"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
                         </div>
                     </div>
-                </div> -->
+                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
-    @endforeach
-    <!-- Blogs view End -->
+    <!-- Service End -->
 
 
-
-
-
-
-
-    <!-- Single blogs view modal start -->
-    @foreach($blogs as $blog)
-    <div class="modal fade" id="myBlog{{$blog->id}}" tabindex="-1" aria-labelledby="myBlogLabel{{$blog->id}}" aria-hidden="true">
+    <!-- Single Service modal Start -->
+    @foreach($services as $service)
+    <div class="modal fade" id="myService{{$service->id}}" tabindex="-1" aria-labelledby="myServiceLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
 
                 <div class="modal-body">
                     <div class="card mb-3">
-                        <img src="{{ asset('storage/' . $blog->b_img) }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/' . $service->s_image) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{$blog->b_title}}</h5>
-                            <p class="card-text">{{$blog->b_message}}</p>
-                            <p class="card-text"><small class="text-muted">Last updated {{$blog->updated_at}} ago</small></p>
+                            <h3 class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                                <img src="{{ asset('storage/' . $service->s_icon) }}" width="50" alt="">
+                                {{$service->s_title}}
+                            </h3>
+                            <p class="card-text">{{$service->s_l_desc}}</p>
+                            <p class="card-text"><small class="text-muted">Last updated {{$service->updated_at}} ago</small></p>
                         </div>
                     </div>
                 </div>
@@ -260,10 +249,138 @@
         </div>
     </div>
     @endforeach
-    <!-- Single blogs view modal end -->
+    <!-- Single Service modal End -->
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Features Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="fs-5 fw-bold text-primary">Why Choosing Us!</p>
+                    <h1 class="display-5 mb-4">Few Reasons Why People Choosing Us!</h1>
+                    <p class="mb-4">
+                        2020, Choose DURA COAT for unmatched expertise in powder coating and
+                        bending services. Our commitment to quality, advanced techniques,
+                        and dedicated team ensure your projects are completed to the
+                        highest standards. Experience durability and aesthetics that stand
+                        the test of time!
+                    </p>
+                    <a class="btn btn-primary py-3 px-4" href="">Explore More</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-4">
+                            <div class="row g-4">
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                                    <div
+                                        class="text-center rounded py-5 px-4"
+                                        style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                                        <div
+                                            class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                            style="width: 90px; height: 90px">
+                                            <i class="fa fa-check fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">100% Satisfaction</h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                                    <div
+                                        class="text-center rounded py-5 px-4"
+                                        style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                                        <div
+                                            class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                            style="width: 90px; height: 90px">
+                                            <i
+                                                class="fa-solid fa-flask-vial fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">In House Testing</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="row g-4">
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                                    <div
+                                        class="text-center rounded py-5 px-4"
+                                        style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                                        <div
+                                            class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                            style="width: 90px; height: 90px">
+                                            <i
+                                                class="fa-solid fa-arrow-up-from-ground-water fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">9 Tank Process</h4>
+                                    </div>
+                                </div>
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                                    <div
+                                        class="text-center rounded py-5 px-4"
+                                        style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                                        <div
+                                            class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                            style="width: 90px; height: 90px">
+                                            <i
+                                                class="fa-solid fa-arrow-down-up-across-line fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">Both Interior & Exterior</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="row g-4">
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                                    <div
+                                        class="text-center rounded py-5 px-4"
+                                        style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                                        <div
+                                            class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                            style="width: 90px; height: 90px">
+                                            <i
+                                                class="fa-solid fa-certificate fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">Branded Powder</h4>
+                                    </div>
+                                </div>
+                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                                    <div
+                                        class="text-center rounded py-5 px-4"
+                                        style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                                        <div
+                                            class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                            style="width: 90px; height: 90px">
+                                            <i class="fa-solid fa-award fa-3x text-primary"></i>
+                                        </div>
+                                        <h4 class="mb-0">Guarantee 10 & 15 Years</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
 
 
 
@@ -293,10 +410,10 @@
 
                     @foreach($contacts as $contact)
                     <p class="mb-2">
-                        <i class="fa fa-phone-alt me-3"></i><a href="tel:{{$contact->c_number}}" style="color: white;">+91 {{$contact->c_number}}</a>
+                        <i class="fa fa-phone me-3"></i><a href="tel:{{$contact->c_number}}" style="color: white;">+91 {{$contact->c_number}}</a>
                     </p>
                     <p class="mb-2">
-                        <i class="fa fa-phone-alt me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
+                        <i class="fa fa-phone me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
                     </p>
                     <p class="mb-2">
                         <i class="fa fa-envelope me-3"></i><a href="mailto:{{$contact->c_email}}" style="color: white;">{{$contact->c_email}}</a>
@@ -406,18 +523,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

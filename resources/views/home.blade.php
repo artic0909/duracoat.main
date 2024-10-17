@@ -42,6 +42,19 @@
 
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
+
+
+  <style>
+    .nav_show {
+      display: none;
+    }
+
+    @media (max-width:988px) {
+      .nav_show {
+        display: block;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -113,8 +126,15 @@
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="/" class="nav-item nav-link active">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+          <div class="dropdown-menu bg-light m-0">
+            <a href="/coating-service" class="dropdown-item">Powder Coating</a>
+            <a href="/bending-service" class="dropdown-item">Bending Service</a>
+          </div>
+        </div>
         <a href="/clients" class="nav-item nav-link">Clients</a>
-        <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
+        <!-- <a href="/test-cirtificate" class="nav-item nav-link">Testing</a> -->
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -125,6 +145,8 @@
                     </div>
                 </div> -->
         <a href="/contact" class="nav-item nav-link">Contact</a>
+
+        <a href="/blogs" class="nav-item nav-link nav_show">Blogs</a>
       </div>
       <a
         href="/blogs"
@@ -298,7 +320,7 @@
               <div class="border-start ps-4">
                 <i class="fa fa-award fa-3x text-primary mb-3"></i>
                 <h4 class="mb-3">Award Winning</h4>
-                <span>DURA COAT proudly offers award-winning powder coating and
+                <span style="text-align: justify;">DURA COAT proudly offers award-winning powder coating and
                   ASP bending services, delivering unmatched quality and
                   innovation to elevate your projects.</span>
               </div>
@@ -307,7 +329,7 @@
               <div class="border-start ps-4">
                 <i class="fa fa-users fa-3x text-primary mb-3"></i>
                 <h4 class="mb-3">Dedicated Labours</h4>
-                <span>Our skilled team at DURA COAT is dedicated to delivering
+                <span style="text-align: justify;">Our skilled team at DURA COAT is dedicated to delivering
                   top-quality powder coating and ASP bending services,
                   ensuring precision and durability in every project</span>
               </div>
@@ -382,7 +404,7 @@
           <p class="fs-5 fw-bold text-primary">Why Choosing Us!</p>
           <h1 class="display-5 mb-4">Few Reasons Why People Choosing Us!</h1>
           <p class="mb-4">
-            Choose DURA COAT for unmatched expertise in powder coating and
+            2020, Choose DURA COAT for unmatched expertise in powder coating and
             bending services. Our commitment to quality, advanced techniques,
             and dedicated team ensure your projects are completed to the
             highest standards. Experience durability and aesthetics that stand
@@ -495,14 +517,14 @@
 
 
 
-  <!-- Service Start -->
+  <!-- Powder Coating Service Start -->
   <div class="container-xxl py-5">
     <div class="container">
       <div
         class="text-center mx-auto wow fadeInUp"
         data-wow-delay="0.1s"
         style="max-width: 500px">
-        <p class="fs-5 fw-bold text-primary">Our Services</p>
+        <p class="fs-5 fw-bold text-primary">Powder Coating Service</p>
         <h1 class="display-5 mb-5">Services That We Offer For You</h1>
       </div>
       <div class="row g-4">
@@ -533,10 +555,10 @@
       </div>
     </div>
   </div>
-  <!-- Service End -->
+  <!-- Powder Coating Service End -->
 
 
-  <!-- Single Service modal Start -->
+  <!-- Powder Coating Single Service modal Start -->
   @foreach($services as $service)
   <div class="modal fade" id="myService{{$service->id}}" tabindex="-1" aria-labelledby="myServiceLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -562,7 +584,95 @@
     </div>
   </div>
   @endforeach
-  <!-- Single Service modal End -->
+  <!-- Powder Coating Single Service modal End -->
+
+
+
+
+
+
+
+
+
+  <!-- Bending Service Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div
+        class="text-center mx-auto wow fadeInUp"
+        data-wow-delay="0.1s"
+        style="max-width: 500px">
+        <p class="fs-5 fw-bold text-primary">Bending Service</p>
+        <h1 class="display-5 mb-5">Services That We Offer For You</h1>
+      </div>
+      <div class="row g-4">
+
+        @foreach($bservices as $bservice)
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="service-item rounded d-flex h-100">
+            <div class="service-img rounded">
+              <img class="img-fluid" src="{{ asset('storage/' . $bservice->sb_image) }}" alt="" />
+            </div>
+            <div class="service-text rounded p-5">
+              <div class="btn-square rounded-circle mx-auto mb-3">
+                <img
+                  class="img-fluid"
+                  src="{{ asset('storage/' . $bservice->sb_icon) }}"
+                  alt="Icon" />
+              </div>
+              <h4 class="mb-3">{{$bservice->sb_title}}</h4>
+              <p class="mb-4">
+                {{$bservice->sb_s_desc}}
+              </p>
+              <a class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#myService{{$service->id}}"><i class="fa fa-arrow-right-long text-primary me-2"></i>Read More</a>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
+      </div>
+    </div>
+  </div>
+  <!-- Bending Service End -->
+
+
+  <!-- Bending Single Service modal Start -->
+  @foreach($bservices as $bservice)
+  <div class="modal fade" id="mybService{{$bservice->id}}" tabindex="-1" aria-labelledby="mybServiceLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <div class="card mb-3">
+            <img src="{{ asset('storage/' . $bservice->sb_image) }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h3 class="card-title" style="display: flex; align-items: center; gap: 6px;">
+                <img src="{{ asset('storage/' . $bservice->sb_icon) }}" width="50" alt="">
+                {{$bservice->sb_title}}
+              </h3>
+              <p class="card-text">{{$bservice->sb_l_desc}}</p>
+              <p class="card-text"><small class="text-muted">Last updated {{$bservice->updated_at}} ago</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  @endforeach
+  <!-- Bending Single Service modal End -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -747,7 +857,7 @@
   <!-- Best Powder Brands Start -->
   <div
     class="container-fluid facts my-5 py-5"
-    
+
     style="background-color: #F5F5F5;">
     <div class="container py-5">
       <div class="row g-5">
@@ -901,8 +1011,7 @@
               class="btn btn-square btn-outline-light rounded-circle me-2"
               href="https://x.com/duracoat_9tank" target="_blank"><i class="fab fa-twitter"></i></a>
             <a
-              class="btn btn-square btn-outline-light rounded-circle me-2"
-              ><i class="fab fa-facebook-f"></i></a>
+              class="btn btn-square btn-outline-light rounded-circle me-2"><i class="fab fa-facebook-f"></i></a>
             <a
               class="btn btn-square btn-outline-light rounded-circle me-2"
               href="https://www.instagram.com/duracoat_9tankprocess/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -913,21 +1022,21 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-4">Coating Services</h4>
-          <a class="btn btn-link" >MS Powder Coating</a>
-          <a class="btn btn-link" >Aluminium Powder Coating</a>
-          <a class="btn btn-link" >GI Coating</a>
-          <a class="btn btn-link" >SS Powder Coating</a>
-          <a class="btn btn-link" >Panel Coating</a>
-          <a class="btn btn-link" >Automobile Parts Coating</a>
+          <a class="btn btn-link">MS Powder Coating</a>
+          <a class="btn btn-link">Aluminium Powder Coating</a>
+          <a class="btn btn-link">GI Coating</a>
+          <a class="btn btn-link">SS Powder Coating</a>
+          <a class="btn btn-link">Panel Coating</a>
+          <a class="btn btn-link">Automobile Parts Coating</a>
         </div>
 
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-4">Bending Service</h4>
-          <a class="btn btn-link" >Sheet Bending</a>
-          <a class="btn btn-link" >MS Pipe Bending</a>
-          <a class="btn btn-link" >Rectangular Tube</a>
-          <a class="btn btn-link" >Square Tube</a>
-          <a class="btn btn-link" >Round Pipe</a>
+          <a class="btn btn-link">Sheet Bending</a>
+          <a class="btn btn-link">MS Pipe Bending</a>
+          <a class="btn btn-link">Rectangular Tube</a>
+          <a class="btn btn-link">Square Tube</a>
+          <a class="btn btn-link">Round Pipe</a>
         </div>
 
         <div class="col-lg-3 col-md-6">

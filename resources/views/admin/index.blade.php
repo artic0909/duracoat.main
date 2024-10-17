@@ -195,7 +195,8 @@
                         </a>
                         <div class="collapse" id="ui-basic1111">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="/admin-services">Services</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-services">Coating Service</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/admin-bendingservices">Bending Service</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="/admin-ral">RAL</a></li>
 
                             </ul>
@@ -316,7 +317,7 @@
 
 
 
-                        <div class="col-md-4 grid-margin stretch-card">
+                        <div class="col-md-3 grid-margin stretch-card">
                             <div class="card tale-bg">
                                 <div class="card-people mt-auto">
                                     <img src="{{asset('img/s1.jpg')}}" alt="people">
@@ -327,7 +328,7 @@
 
 
 
-                        <div class="col-md-4 grid-margin stretch-card">
+                        <div class="col-md-3 grid-margin stretch-card">
                             <div class="card tale-bg">
                                 <div class="card-people mt-auto">
                                     <img src="{{asset('img/s2.jpg')}}" alt="people">
@@ -337,10 +338,20 @@
                         </div>
 
 
-                        <div class="col-md-4 grid-margin stretch-card">
+                        <div class="col-md-3 grid-margin stretch-card">
                             <div class="card tale-bg">
                                 <div class="card-people mt-auto">
                                     <img src="{{asset('img/s10.jpg')}}" alt="people">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3 grid-margin stretch-card">
+                            <div class="card tale-bg">
+                                <div class="card-people mt-auto">
+                                    <img src="{{asset('img/s5.jpg')}}" alt="people">
 
                                 </div>
                             </div>

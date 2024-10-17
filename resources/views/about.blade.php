@@ -39,6 +39,7 @@
 
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -68,7 +69,7 @@
 
         @foreach($contacts as $contact)
         <div class="h-100 d-inline-flex align-items-center me-4">
-          <span class="fa fa-phone-alt me-2"></span>
+          <span class="fa fa-phone me-2"></span>
           <span><a href="tel:{{$contact->c_number}}" style="color: white">+91 {{$contact->c_number}}</a></span>
         </div>
         <div class="h-100 d-inline-flex align-items-center">
@@ -116,17 +117,27 @@
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link active">About</a>
+
+
+
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+          <div class="dropdown-menu bg-light m-0">
+            <a href="/coating-service" class="dropdown-item">Powder Coating</a>
+            <a href="/bending-service" class="dropdown-item">Bending Service</a>
+          </div>
+        </div>
+
+
+
+
+
         <a href="/clients" class="nav-item nav-link">Clients</a>
-        <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
+        <!-- <a href="/test-cirtificate" class="nav-item nav-link">Testing</a> -->
         <a href="/ral" class="nav-item nav-link">RAL</a>
-        <!-- <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
-                    <div class="dropdown-menu bg-light m-0">
-                        <a href="feature.html" class="dropdown-item">Powder Coating</a>
-                        <a href="quote.html" class="dropdown-item">Bending</a>
-                        <a href="team.html" class="dropdown-item">Machinery</a>
-                    </div>
-                </div> -->
+
+        
+
         <a href="/contact" class="nav-item nav-link">Contact</a>
       </div>
       <a
@@ -171,6 +182,135 @@
 
 
 
+
+  <!-- Features Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+          <p class="fs-5 fw-bold text-primary">Why Choosing Us!</p>
+          <h1 class="display-5 mb-4">Few Reasons Why People Choosing Us!</h1>
+          <p class="mb-4">
+            2020, Choose DURA COAT for unmatched expertise in powder coating and
+            bending services. Our commitment to quality, advanced techniques,
+            and dedicated team ensure your projects are completed to the
+            highest standards. Experience durability and aesthetics that stand
+            the test of time!
+          </p>
+          <a class="btn btn-primary py-3 px-4" href="">Explore More</a>
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-4">
+              <div class="row g-4">
+                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                  <div
+                    class="text-center rounded py-5 px-4"
+                    style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                    <div
+                      class="btn-square bg-light rounded-circle mx-auto mb-4"
+                      style="width: 90px; height: 90px">
+                      <i class="fa fa-check fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-0">100% Satisfaction</h4>
+                  </div>
+                </div>
+
+                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                  <div
+                    class="text-center rounded py-5 px-4"
+                    style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                    <div
+                      class="btn-square bg-light rounded-circle mx-auto mb-4"
+                      style="width: 90px; height: 90px">
+                      <i
+                        class="fa-solid fa-flask-vial fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-0">In House Testing</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="row g-4">
+                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                  <div
+                    class="text-center rounded py-5 px-4"
+                    style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                    <div
+                      class="btn-square bg-light rounded-circle mx-auto mb-4"
+                      style="width: 90px; height: 90px">
+                      <i
+                        class="fa-solid fa-arrow-up-from-ground-water fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-0">9 Tank Process</h4>
+                  </div>
+                </div>
+                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                  <div
+                    class="text-center rounded py-5 px-4"
+                    style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                    <div
+                      class="btn-square bg-light rounded-circle mx-auto mb-4"
+                      style="width: 90px; height: 90px">
+                      <i
+                        class="fa-solid fa-arrow-down-up-across-line fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-0">Both Interior & Exterior</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="row g-4">
+                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                  <div
+                    class="text-center rounded py-5 px-4"
+                    style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                    <div
+                      class="btn-square bg-light rounded-circle mx-auto mb-4"
+                      style="width: 90px; height: 90px">
+                      <i
+                        class="fa-solid fa-certificate fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-0">Branded Powder</h4>
+                  </div>
+                </div>
+                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                  <div
+                    class="text-center rounded py-5 px-4"
+                    style="box-shadow: 0 0 45px rgba(0, 0, 0, 0.08)">
+                    <div
+                      class="btn-square bg-light rounded-circle mx-auto mb-4"
+                      style="width: 90px; height: 90px">
+                      <i class="fa-solid fa-award fa-3x text-primary"></i>
+                    </div>
+                    <h4 class="mb-0">Guarantee 10 & 15 Years</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Features End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- About Start -->
   <div class="container-xxl py-5">
     <div class="container">
@@ -201,7 +341,7 @@
               <div class="border-start ps-4">
                 <i class="fa fa-award fa-3x text-primary mb-3"></i>
                 <h4 class="mb-3">Award Winning</h4>
-                <span>DURA COAT proudly offers award-winning powder coating and
+                <span style="text-align: justify;">DURA COAT proudly offers award-winning powder coating and
                   ASP bending services, delivering unmatched quality and
                   innovation to elevate your projects.</span>
               </div>
@@ -210,7 +350,7 @@
               <div class="border-start ps-4">
                 <i class="fa fa-users fa-3x text-primary mb-3"></i>
                 <h4 class="mb-3">Dedicated Labours</h4>
-                <span>Our skilled team at DURA COAT is dedicated to delivering
+                <span style="text-align: justify;">Our skilled team at DURA COAT is dedicated to delivering
                   top-quality powder coating and ASP bending services,
                   ensuring precision and durability in every project</span>
               </div>
@@ -225,6 +365,33 @@
 
 
 
+
+
+
+  <!-- Best Powder Brands Start -->
+  <div
+    class="container-fluid facts my-5 py-5"
+
+    style="background-color: #F5F5F5;">
+    <div class="container py-5">
+      <div class="row g-5">
+
+
+
+        @foreach($brands as $brand)
+        <div
+          class="col-sm-6 col-lg-3 text-center wow fadeIn"
+          data-wow-delay="0.1s">
+          <img style="filter: drop-shadow(1px 1px 1px black);" src="{{ asset('storage/' . $brand->collab_company) }}" width="240px" alt="" />
+        </div>
+        @endforeach
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- Best Powder Brands End -->
 
 
 
@@ -269,6 +436,120 @@
     </div>
   </div>
   <!-- Facts End -->
+
+
+
+
+
+
+
+
+  <!-- Test Certificate Table Start -->
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div
+        class="text-center mx-auto wow fadeInUp"
+        data-wow-delay="0.1s"
+        style="max-width: 500px">
+        <p class="fs-5 fw-bold text-primary">Test Certificate</p>
+        <h1 class="display-5 mb-5" style="text-transform: capitalize;">
+          We Provide Test certificate for all work
+        </h1>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-12 table_main2">
+          <div
+            class="bg-light rounded p-4 p-sm-5 wow fadeInUp table_main"
+            data-wow-delay="0.1s">
+            <div class="row g-3">
+              <div class="col-sm-12">
+                <table class="table table-hover">
+                  <thead>
+                    <spna class="scr" style="font-weight: 700">Scroll Left <i class="fa-solid fa-arrow-left-long text-primary"></i></spna>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Properties</th>
+                      <th scope="col">Specifications</th>
+                      <th scope="col">Test Results</th>
+                      <th scope="col">Remarks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Substrate</td>
+                      <td>Galvanized iron Profiles</td>
+                      <td>Galvanized iron Profiles</td>
+                      <td>IS 13871: 1993</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Dry filmThickness</td>
+                      <td>60-80 micron</td>
+                      <td>..... µ</td>
+                      <td>Pass</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Baking Temperature</td>
+                      <td>200° C</td>
+                      <td>200° C</td>
+                      <td>Pass</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Baking Time</td>
+                      <td>10 Minutes</td>
+                      <td>10 Minutes</td>
+                      <td>Pass</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Colour Uniformity Test</td>
+                      <td>Close to standard</td>
+                      <td>Close to standard</td>
+                      <td>Pass</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6</th>
+                      <td>Protection against humidity</td>
+                      <td>No blistering, rusting of adhesion</td>
+                      <td>Pass</td>
+                      <td>No Peel off</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">7</th>
+                      <td>Cross Hatch Test</td>
+                      <td>Check Adhesion</td>
+                      <td>Pass</td>
+                      <td>No Peel off</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8</th>
+                      <td>Boiling Water</td>
+                      <td>
+                        No Adhesion failure/Blisters on the surface after
+                        completion of 1 hour
+                      </td>
+                      <td>Pass</td>
+                      <td>No Crack</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Test Certificate Table End -->
+
+
+
+
+
+
 
 
 
@@ -332,10 +613,10 @@
 
           @foreach($contacts as $contact)
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i><a href="tel:{{$contact->c_number}}" style="color: white;">+91 {{$contact->c_number}}</a>
+            <i class="fa fa-phone me-3"></i><a href="tel:{{$contact->c_number}}" style="color: white;">+91 {{$contact->c_number}}</a>
           </p>
           <p class="mb-2">
-            <i class="fa fa-phone-alt me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
+            <i class="fa fa-phone me-3"></i><a href="tel:9088511511" style="color: white;">+91 9088511511</a>
           </p>
           <p class="mb-2">
             <i class="fa fa-envelope me-3"></i><a href="mailto:{{$contact->c_email}}" style="color: white;">{{$contact->c_email}}</a>
@@ -347,8 +628,7 @@
               class="btn btn-square btn-outline-light rounded-circle me-2"
               href="https://x.com/duracoat_9tank" target="_blank"><i class="fab fa-twitter"></i></a>
             <a
-              class="btn btn-square btn-outline-light rounded-circle me-2"
-              ><i class="fab fa-facebook-f"></i></a>
+              class="btn btn-square btn-outline-light rounded-circle me-2"><i class="fab fa-facebook-f"></i></a>
             <a
               class="btn btn-square btn-outline-light rounded-circle me-2"
               href="https://www.instagram.com/duracoat_9tankprocess/" target="_blank"><i class="fab fa-instagram"></i></a>

@@ -116,8 +116,15 @@
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+          <div class="dropdown-menu bg-light m-0">
+            <a href="/coating-service" class="dropdown-item">Powder Coating</a>
+            <a href="/bending-service" class="dropdown-item">Bending Service</a>
+          </div>
+        </div>
         <a href="/clients" class="nav-item nav-link active">Clients</a>
-        <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
+        <!-- <a href="/test-cirtificate" class="nav-item nav-link">Testing</a> -->
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
@@ -187,14 +194,7 @@
           Delivering Precision and Quality to Our Clients
         </h1>
       </div>
-      <div class="row wow fadeInUp" data-wow-delay="0.3s">
-        <div class="col-12 text-center">
-          <ul class="list-inline rounded mb-5" id="portfolio-flters">
-            <li class="mx-2 active" data-filter="*">All</li>
-            <li class="mx-2" data-filter=".clients">Clients</li>
-          </ul>
-        </div>
-      </div>
+      
 
       <div class="row g-4 portfolio-container">
 
@@ -204,7 +204,7 @@
 
         @foreach($clients as $client)
         <div
-          class="col-lg-3 col-md-6 portfolio-item clients wow fadeInUp"
+          class="col-lg-3 col-md-6 portfolio-item wow fadeInUp"
           data-wow-delay="0.1s">
           <div class="portfolio-inner rounded">
             <img class="img-fluid" src="{{ asset('storage/' . $client->client_img) }}" alt="" />

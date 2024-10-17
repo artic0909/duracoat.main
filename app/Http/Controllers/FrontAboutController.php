@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AdminAboutDataModel;
 use App\Models\AdminAboutNumberModel;
+use App\Models\AdminCollabCompanyModel;
 use App\Models\AdminCompanyDetailsModel;
 use App\Models\AdminOtherBannerModel;
 use App\Models\AdminTeamsModel;
@@ -18,6 +19,7 @@ class FrontAboutController extends Controller
         $aboutNums = AdminAboutNumberModel::all();
         $teams = AdminTeamsModel::all();
         $contacts = AdminCompanyDetailsModel::all();
-        return view('about', compact('otherbanners', 'aboutDatas', 'aboutNums', 'teams', 'contacts'));
+        $brands = AdminCollabCompanyModel::all();
+        return view('about', compact('otherbanners', 'aboutDatas', 'aboutNums', 'teams', 'contacts', 'brands'));
     }
 }

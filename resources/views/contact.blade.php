@@ -115,8 +115,15 @@
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="/" class="nav-item nav-link">Home</a>
         <a href="/about" class="nav-item nav-link">About</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
+          <div class="dropdown-menu bg-light m-0">
+            <a href="/coating-service" class="dropdown-item">Powder Coating</a>
+            <a href="/bending-service" class="dropdown-item">Bending Service</a>
+          </div>
+        </div>
         <a href="/clients" class="nav-item nav-link">Clients</a>
-        <a href="/test-cirtificate" class="nav-item nav-link">Testing</a>
+        <!-- <a href="/test-cirtificate" class="nav-item nav-link">Testing</a> -->
         <a href="/ral" class="nav-item nav-link">RAL</a>
         <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
